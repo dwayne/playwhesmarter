@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Play Whe Smarter - The smarter way to play Play Whe</title>
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.0.1/normalize.css">
+  <style>
+    body {
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 30%;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+    }
+
+    td.mark {
+      text-align: center;
+    }
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
+  <![endif]-->
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/1.7.2/moment.min.js"></script>
+
+  <script>
+    $(function () {
+      var marks = null;
+      $.getJSON("http://api.playwhesmarter.com/marks?callback=?", function (data) { marks = data; });
+
+      $.getJSON("http://api.playwhesmarter.com/results?callback=?", { limit: 90 }, function (data) {
+        $.each(data, function (index, result) {
+          var date = moment(result.date).format('MMMM Do, YYYY');
+          var time = { 1: '10:30 am', 2: '1:00 pm', 3: '6:30 pm' }[result.period];
+          var number = result.number;
+
+          var row = '<tr>';
+          row += '<td>' + date + '</td>';
+          row += '<td>' + time + '</td>';
+          row += '<td class="mark" title="' + marks[number-1].name + '">' + number + '</td>';
+          row += '</tr>';
+
+          $("#playwhe-results").append(row);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Play Whe Smarter</h1>
+  <h2>The smarter way to play Play Whe</h2>
+  <p>Keep up to date with the most recent Play Whe results in the table below:</p>
+  <p>Tip: Hover over a mark to see its spirit.</p>
+  <table id="playwhe-results">
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Mark</th>
+    </tr>
+  </table>
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28221689-1']);
+    _gaq.push(['_setDomainName', 'playwhesmarter.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</body>
+</html>
