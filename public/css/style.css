@@ -1,0 +1,96 @@
+#main-header h1 {
+  margin-top: 50px;
+}
+
+#social-icons .wrapper {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+#social-icons .twitter {
+  margin-top: 1px;
+  margin-left: 20px;
+}
+
+#playwhe-results {
+  margin-top: 20px;
+}
+
+#playwhe-results .result {
+  width: 250px;
+  height: 250px;
+  margin: 0 auto;
+  border: 1px solid grey;
+
+  cursor: default;
+
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+#playwhe-results .wrapper {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  text-align: center;
+}
+
+#playwhe-results .time-of-day {
+  margin: 0;
+  padding: 0;
+  padding-top: 4px;
+  padding-bottom: 10px;
+
+  font-size: 0.8em;
+  line-height: 1em;
+}
+
+#playwhe-results .number {
+  margin: 0;
+  padding: 0;
+
+  font-size: 15em;
+  line-height: 1em;
+}
+
+#playwhe-results .draw {
+  margin: 0;
+  margin-top: 2px;
+  padding: 0;
+
+  position: absolute;
+  bottom: 2px;
+  left: 10px;
+
+  font-size: 0.8em;
+}
+
+#playwhe-results .date {
+  margin: 0;
+  padding: 0;
+
+  position: absolute;
+  bottom: 2px;
+  right: 10px;
+
+  font-size: 0.8em;
+}
+
+#main-footer {
+  margin-top: 50px;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  float: left;
+}
+
+.big {
+  font-weight: bold;
+  font-size: 1.5em;
+  line-height: 1em;
+}

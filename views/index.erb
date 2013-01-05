@@ -1,84 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
+
   <meta charset="utf-8">
-  <meta name="description" content="Your #1 source for the latest Play Whe results.">
   <title>Play Whe Smarter - The smarter way to play Play Whe</title>
+  <meta name="description" content="Your #1 source for the latest Play Whe results.">
+  <meta name="author" content="Dwayne R. Crooks">
 
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/2.0.1/normalize.css">
-  <style>
-    body {
-      margin-left: 10px;
-      margin-bottom: 10px;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    table {
-      border-collapse: collapse;
-      width: 30%;
-    }
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    table, th, td {
-      border: 1px solid black;
-    }
-
-    td.mark {
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/skeleton.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/style.css">
 
   <!--[if lt IE 9]>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/1.7.2/moment.min.js"></script>
-
-  <script>
-    $(function () {
-      var marks = null;
-      $.getJSON("http://api.playwhesmarter.com/marks?callback=?", function (data) { marks = data; });
-
-      $.getJSON("http://api.playwhesmarter.com/results?callback=?", { limit: 90 }, function (data) {
-        $.each(data, function (index, result) {
-          var date = moment(result.date).format('MMMM Do, YYYY');
-          var time = { 1: '10:30 am', 2: '1:00 pm', 3: '6:30 pm' }[result.period];
-          var number = result.number;
-
-          var row = '<tr>';
-          row += '<td>' + date + '</td>';
-          row += '<td>' + time + '</td>';
-          row += '<td class="mark" title="' + marks[number-1].name + '">' + number + '</td>';
-          row += '</tr>';
-
-          $("#playwhe-results").append(row);
-        });
-      });
-    });
-  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.3/angular.min.js"></script>
+  <script src="/js/playwhesmarter.js"></script>
 </head>
 <body>
-  <h1>Play Whe Smarter</h1>
-  <h2>The smarter way to play Play Whe</h2>
-  <p>Keep up to date with the most recent Play Whe results in the table below:</p>
-  <p>Tip: Hover over a mark to see its spirit.</p>
-  <table id="playwhe-results">
-    <tr>
-      <th>Date</th>
-      <th>Time</th>
-      <th>Mark</th>
-    </tr>
-  </table>
-  <script>
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-28221689-1']);
-    _gaq.push(['_setDomainName', 'playwhesmarter.com']);
-    _gaq.push(['_trackPageview']);
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=404438466305922";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
+  <div class="container">
+    <hgroup id="main-header" class="sixteen columns center">
+      <h1>Play Whe Smarter</h1>
+      <h2>The smarter way to play Play Whe</h2>
+    </hgroup>
+
+    <div id="social-icons" class="center">
+      <div class="wrapper">
+        <div class="fb left">
+          <div class="fb-like" data-href="http://www.playwhesmarter.com/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div>
+        </div>
+
+        <div class="twitter left">
+          <a href="https://twitter.com/playwhesmarter" class="twitter-follow-button" data-show-count="false">Follow @playwhesmarter</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
+      </div>
+    </div>
+
+    <div id="playwhe-results" class="sixteen columns" ng-app='PlayWheSmarter' ng-controller="PlayWheResultsCtrl">
+      <div class="one-third column alpha">
+        <div class="result">
+          <div class="wrapper">
+            <div class="time-of-day" title="{{results[0].period | timeOfDay:true}}">{{results[0].period | timeOfDay}}</div>
+            <div class="number" title="{{results[0].number | spirit}}">{{results[0].number}}</div>
+            <div class="draw">Draw no. {{results[0].draw}}</div>
+            <div class="date">{{results[0].date | date:'mediumDate'}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="one-third column">
+        <div class="result">
+          <div class="wrapper">
+            <div class="time-of-day" title="{{results[1].period | timeOfDay:true}}">{{results[1].period | timeOfDay}}</div>
+            <div class="number" title="{{results[1].number | spirit}}">{{results[1].number}}</div>
+            <div class="draw">Draw no. {{results[1].draw}}</div>
+            <div class="date">{{results[1].date | date:'mediumDate'}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="one-third column omega">
+        <div class="result">
+          <div class="wrapper">
+            <div class="time-of-day" title="{{results[2].period | timeOfDay:true}}">{{results[2].period | timeOfDay}}</div>
+            <div class="number" title="{{results[2].number | spirit}}">{{results[2].number}}</div>
+            <div class="draw">Draw no. {{results[2].draw}}</div>
+            <div class="date">{{results[2].date | date:'mediumDate'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="main-footer" class="sixteen columns center">
+      <p><a href="" title="Coming Soon | View past results">Click here to view <span class="big">EVERY</span> Play Whe result that ever played</a></p>
+      <p>Created by <a href="http://goo.gl/MW00k" target="_blank" title="Play Whe Smarter's Facebook Page">Play Whe Smarter</a>.</p>
+    </footer>
+
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28221689-1']);
+      _gaq.push(['_setDomainName', 'playwhesmarter.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </div>
 </body>
 </html>
