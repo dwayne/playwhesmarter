@@ -68,4 +68,22 @@ angular.module('PlayWheSmarter', [])
     return function (number) {
       return SPIRITS[number];
     };
+  })
+  .filter('prettyDate', function ($window) {
+    var MONTHS = [
+      '', /* force 1-based access */
+      'Jan', 'Feb', 'Mar', 'Apr',
+      'May', 'Jun', 'Jul', 'Aug',
+      'Sep', 'Oct', 'Nov', 'Dec',
+    ];
+
+    return function (date) {
+      var parts = date.split('-');
+
+      var year  = parts[0];
+      var month = MONTHS[$window.parseInt(parts[1])];
+      var day   = $window.parseInt(parts[2]);
+
+      return month + ' ' + day + ', ' + year;
+    }
   });
