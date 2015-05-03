@@ -1,0 +1,79 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=404438466305922";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="container">
+  <hgroup id="main-header" class="sixteen columns center">
+    <h1>Play Whe <span class="highlight">Smarter</span></h1>
+    <h2>The smarter way to play Play Whe</h2>
+  </hgroup>
+
+  <div id="social-icons" class="center">
+    <div class="wrapper">
+      <div class="fb left">
+        <div class="fb-like" data-href="http://www.playwhesmarter.com/" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true" data-font="arial"></div>
+      </div>
+
+      <div class="twitter left">
+        <a href="https://twitter.com/playwhesmarter" class="twitter-follow-button" data-show-count="false">Follow @playwhesmarter</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+    </div>
+  </div>
+
+  <div id="playwhe-results" class="sixteen columns" ng-app='PlayWheSmarter' ng-controller="PlayWheResultsCtrl">
+    <div class="one-third column alpha">
+      <div class="result">
+        <div class="wrapper">
+          <div class="time-of-day highlight" title="{{results[0].period | timeOfDay:true}}">{{results[0].period | timeOfDay}}</div>
+          <div class="number" title="{{results[0].number | spirit}}">{{results[0].number}}</div>
+          <div class="draw highlight">Draw no. {{results[0].draw}}</div>
+          <div class="date highlight">{{results[0].date | prettyDate}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="one-third column">
+      <div class="result">
+        <div class="wrapper">
+          <div class="time-of-day highlight" title="{{results[1].period | timeOfDay:true}}">{{results[1].period | timeOfDay}}</div>
+          <div class="number" title="{{results[1].number | spirit}}">{{results[1].number}}</div>
+          <div class="draw highlight">Draw no. {{results[1].draw}}</div>
+          <div class="date highlight">{{results[1].date | prettyDate}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="one-third column omega">
+      <div class="result">
+        <div class="wrapper">
+          <div class="time-of-day highlight" title="{{results[2].period | timeOfDay:true}}">{{results[2].period | timeOfDay}}</div>
+          <div class="number" title="{{results[2].number | spirit}}">{{results[2].number}}</div>
+          <div class="draw highlight">Draw no. {{results[2].draw}}</div>
+          <div class="date highlight">{{results[2].date | prettyDate}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="main-footer" class="sixteen columns center">
+    <p><a href="" title="Coming Soon | View past results">Click here to view <span class="big">EVERY</span> Play Whe result that ever played</a></p>
+    <p>Created by <a href="http://goo.gl/MW00k" target="_blank" title="Play Whe Smarter's Facebook Page">Play Whe Smarter</a></p>
+  </footer>
+
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-28221689-1']);
+    _gaq.push(['_setDomainName', 'playwhesmarter.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</div>

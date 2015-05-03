@@ -1,1 +1,5 @@
-.rvmrc
+.DS_Store
+/.bundle
+/.cache
+/.sass-cache
+/build
