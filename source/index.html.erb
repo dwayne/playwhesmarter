@@ -17,28 +17,14 @@
 </div>
 
 <div class="playwhe-results" ng-app="PlayWheSmarter" ng-controller="PlayWheResultsCtrl">
-  <div class="playwhe-results__result">
-    <div class="time-of-day" title="{{results[0].period | timeOfDay:true}}">{{results[0].period | timeOfDay}}</div>
-    <div class="number" title="{{results[0].number | spirit}}">{{results[0].number}}</div>
-    <div class="playwhe-results__result-footer">
-      <div class="draw">Draw no. {{results[0].draw}}</div>
-      <div class="date">{{results[0].date | prettyDate}}</div>
-    </div>
-  </div>
-  <div class="playwhe-results__result">
-    <div class="time-of-day" title="{{results[1].period | timeOfDay:true}}">{{results[1].period | timeOfDay}}</div>
-    <div class="number" title="{{results[1].number | spirit}}">{{results[1].number}}</div>
-    <div class="playwhe-results__result-footer">
-      <div class="draw">Draw no. {{results[1].draw}}</div>
-      <div class="date">{{results[1].date | prettyDate}}</div>
-    </div>
-  </div>
-  <div class="playwhe-results__result">
-    <div class="time-of-day" title="{{results[2].period | timeOfDay:true}}">{{results[2].period | timeOfDay}}</div>
-    <div class="number" title="{{results[2].number | spirit}}">{{results[2].number}}</div>
-    <div class="playwhe-results__result-footer">
-      <div class="draw">Draw no. {{results[2].draw}}</div>
-      <div class="date">{{results[2].date | prettyDate}}</div>
+  <div ng-repeat="result in results">
+    <div class="playwhe-results__result">
+      <div class="time-of-day" title="{{result.period | timeOfDay:true}}">{{result.period | timeOfDay}}</div>
+      <div class="number" title="{{result.number | spirit}}">{{result.number}}</div>
+      <div class="playwhe-results__result-footer">
+        <div class="draw">Draw no. {{result.draw}}</div>
+        <div class="date">{{result.date | date:'MMM d, yyyy'}}</div>
+      </div>
     </div>
   </div>
 </div>
