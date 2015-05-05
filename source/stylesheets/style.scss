@@ -2,6 +2,8 @@
 @import "neat/neat";
 @import "normalize";
 
+@import "social_buttons";
+
 $white: #fff;
 $black: #333;
 $red: #e11923;
@@ -84,27 +86,6 @@ a, a:visited {
     font-style: normal;
     text-transform: uppercase;
   }
-}
-
-.social-icons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  margin-bottom: 30px;
-
-  .social-icon {
-    margin-bottom: 8px;
-  }
-
-  @media screen and (min-width: 960px) {
-    margin-bottom: 40px;
-  }
-}
-
-.social-icons__fb {
-  margin-right: 10px;
 }
 
 .playwhe-results {
