@@ -10,9 +10,9 @@ app.factory 'PlayWheAPI', ['$http', ($http) ->
 app.filter 'timeOfDay', ->
   (period, asTime) ->
     if (asTime)
-      { 1: '10:30 am', 2: '1:00 pm', 3: '6:30 pm' }[period]
+      { 'EM': '10:30 AM', 'AM': '1:00 PM', 'AN': '4:00 PM', 'PM': '6:30 PM' }[period]
     else
-      { 1: 'Morning', 2: 'Midday', 3: 'Evening' }[period]
+      { 'EM': 'Morning', 'AM': 'Midday', 'AN': 'Afternoon', 'PM': 'Evening' }[period]
 
 app.filter 'spirit', ->
   SPIRITS = [
