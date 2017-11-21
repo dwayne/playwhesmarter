@@ -1,11 +1,11 @@
-<%= partial 'shared/fb' %>
+<%= render '/_facebook.html' %>
 
 <header class="pws-header">
   <h1>Play Whe <span>Smarter</span></h1>
   <h2>The smarter way to play Play Whe</h2>
 </header>
 
-<%= partial 'shared/social_buttons' %>
+<%= render '/_social_buttons.html' %>
 
 <div class="playwhe-results" ng-app="PlayWheSmarter" ng-controller="PlayWheResultsCtrl">
   <div ng-repeat="result in results">

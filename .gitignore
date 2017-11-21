@@ -1,5 +1,4 @@
-.DS_Store
-/.bundle
-/.cache
-/.sass-cache
-/build
+crash.log
+node_modules
+output
+tmp
