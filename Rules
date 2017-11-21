@@ -1,19 +1,11 @@
 #!/usr/bin/env ruby
 
 compile '/**/*.html' do
+  filter :erb
   layout '/default.*'
 end
 
-# This is an example rule that matches Markdown (.md) files, and filters them
-# using the :kramdown filter. It is commented out by default, because kramdown
-# is not bundled with Nanoc or Ruby.
-#
-#compile '/**/*.md' do
-#  filter :kramdown
-#  layout '/default.*'
-#end
-
-route '/**/*.{html,md}' do
+route '/**/*.html' do
   if item.identifier =~ '/index.*'
     '/index.html'
   else
