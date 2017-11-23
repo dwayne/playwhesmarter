@@ -1,6 +1,4 @@
 User-agent: *
 Disallow: /images/
 Disallow: /CNAME
-Disallow: /playwhesmarter.js
-Disallow: /style.css
 Sitemap: http://www.playwhesmarter.com/sitemap.txt
