@@ -4,12 +4,17 @@
   "private": true,
   "description": "The Play Whe Smarter website.",
   "scripts": {
+    "build": "npm run build:js && npm run build:css",
     "build:js": "babel js -d output",
-    "build:css": "node-sass -o output sass"
+    "build:css": "node-sass -o output sass",
+    "build:prod": "npm run build:js:prod && npm run build:css:prod",
+    "build:js:prod": "BABEL_ENV=production babel js -d output",
+    "build:css:prod": "node-sass -o output --output-style compressed sass"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-minify": "^0.2.0",
     "node-sass": "^4.7.2"
   }
 }
