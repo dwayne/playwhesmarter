@@ -1,26 +1,30 @@
 <%= render '/_facebook.html' %>
 
-<header class="pws-header">
-  <h1>Play Whe <span>Smarter</span></h1>
-  <h2>The smarter way to play Play Whe</h2>
+<header class="mt-4 mb-5 text-center">
+  <h1 class="title">Play Whe <span class="playwhe-red">Smarter</span></h1>
+  <h2 class="subtitle">The smarter way to play Play Whe</h2>
 </header>
 
-<%= render '/_social_buttons.html' %>
+<div class="mb-5">
+  <%= render '/_social_buttons.html' %>
+</div>
 
-<div class="playwhe-results" ng-app="PlayWheSmarter" ng-controller="PlayWheResultsCtrl">
-  <div ng-repeat="result in results">
-    <div class="playwhe-results__result">
-      <div class="time-of-day" title="{{result.period | timeOfDay:true}}">{{result.period | timeOfDay}}</div>
-      <div class="number" title="{{result.number | spirit}}">{{result.number}}</div>
-      <div class="playwhe-results__result-footer">
-        <div class="draw">Draw no. {{result.draw}}</div>
-        <div class="date">{{result.date | date:'MMM d, yyyy'}}</div>
+<div class="mb-5">
+  <div class="d-flex flex-row flex-wrap justify-content-center" ng-app="PlayWheSmarter" ng-controller="PlayWheResultsCtrl">
+    <div ng-repeat="result in results">
+      <div class="playwhe-result">
+        <div class="time-of-day" title="{{result.period | timeOfDay:true}}">{{result.period | timeOfDay}}</div>
+        <div class="number" title="{{result.number | spirit}}">{{result.number}}</div>
+        <div class="d-flex flex-row flex-wrap justify-content-between align-content-between align-items-stretch">
+          <div class="draw">Draw no. {{result.draw}}</div>
+          <div class="date">{{result.date | date:'MMM d, yyyy'}}</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="pws-footer">
+<footer class="text-center">
   <p><a href="https://goo.gl/UggQDG" target="_blank" title="Coming Soon | View past results">Click here to view <em>every</em> Play Whe result that ever played</a></p>
   <p>Created by <a href="http://goo.gl/MW00k" target="_blank" title="Play Whe Smarter's Facebook Page">Play Whe Smarter</a></p>
 </footer>

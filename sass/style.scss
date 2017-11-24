@@ -1,106 +1,62 @@
-@import "bourbon/bourbon";
-@import "neat/neat";
-@import "normalize";
+@import url('https://fonts.googleapis.com/css?family=Russo+One|Shojumaru');
+@import 'bootstrap';
 
-@import "social_buttons";
+$russo-one-font-family: 'Russo One', sans-serif;
+$shojumaru-font-family: 'Shojumaru', cursive;
 
 $white: #fff;
 $black: #333;
-$red: #e11923;
-$blue: #0d0e2a;
+$playwhe-red: #e11923;
+$playwhe-blue: #0d0e2a;
+
+.playwhe-red {
+  color: $playwhe-red;
+}
 
 body {
-  font-family: 'Russo One', sans-serif;
-  font-style: normal;
-  font-weight: 400;
+  font-family: $russo-one-font-family;
   font-size: 14px;
   line-height: 1.4em;
   letter-spacing: 1px;
-
   background: $white url('images/bg.png');
-  color: $blue;
+  color: $playwhe-blue;
   text-shadow: 0px 1px 3px $black;
 }
 
-a, a:visited {
-  color: $blue;
+a, a:hover, a:visited {
+  color: $playwhe-blue;
   text-decoration: none;
-  border-bottom: 1px dashed $blue;
+  border-bottom: 1px dashed $playwhe-blue;
 }
 
-.pws-header {
-  text-align: center;
+.title {
+  font-family: $shojumaru-font-family;
+  font-size: 2em;
+  line-height: 1.2;
 
-  h1 {
-    margin: 15px 0 5px 0;
-
-    font-family: 'Shojumaru', cursive;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.5em;
-    line-height: 1.2;
-
-    span {
-      color: $red;
-    }
-
-    @media screen and (min-width: 384px) {
-      font-size: 2em;
-    }
-
-    @media screen and (min-width: 560px) {
-      font-size: 3em;
-    }
-
-    @media screen and (min-width: 960px) {
-      margin: 30px 0 10px 0;
-      font-size: 5em;
-    }
+  @include media-breakpoint-up(sm) {
+    font-size: 3em;
   }
 
-  h2 {
-    margin: 0 0 30px 0;
-
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.1em;
-    line-height: 1.2;
-
-    @media screen and (min-width: 560px) {
-      font-size: 1.75em;
-    }
-
-    @media screen and (min-width: 960px) {
-      margin-bottom: 40px;
-      font-size: 2.5em;
-    }
+  @include media-breakpoint-up(lg) {
+    font-size: 5em;
   }
 }
 
-.pws-footer {
-  margin: 25px 10px;
-  text-align: center;
+.subtitle {
+  font-size: 1.1em;
+  line-height: 1.2;
 
-  em {
-    font-size: 1.2em;
-    font-style: normal;
-    text-transform: uppercase;
+  @include media-breakpoint-up(sm) {
+    font-size: 1.75em;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 2.5em;
   }
 }
 
-.playwhe-results {
-  margin-bottom: 30px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  @media screen and (min-width: 960px) {
-    margin-bottom: 40px;
-  }
-}
-
-.playwhe-results__result {
+.playwhe-result {
   margin: 0 15px 25px 15px;
   padding: 5px;
 
@@ -121,28 +77,17 @@ a, a:visited {
   .number {
     margin-bottom: 5px;
     text-align: center;
-    font-family: 'Shojumaru', cursive;
-    font-style: normal;
-    font-weight: 400;
+    font-family: $shojumaru-font-family;
     font-size: 11.2em;
-    text-shadow: 0px 3px 5px #333;
+    text-shadow: 0px 3px 5px $black;
   }
 
   .time-of-day, .draw, .date {
-    color: $red;
+    color: $playwhe-red;
     text-shadow: 0px 1px 1px $white;
   }
 
-  @media screen and (min-width: 960px) {
+  @include media-breakpoint-up(lg) {
     margin: 0 20px 25px 20px;
   }
-}
-
-.playwhe-results__result-footer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
-  align-items: stretch;
 }
