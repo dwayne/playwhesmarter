@@ -2,7 +2,7 @@ const app = angular.module('PlayWheSmarter', [])
 
 app.factory('PlayWheAPI', ['$http', ($http) => {
   return {
-    getResults: () => $http.jsonp('http://api.playwhesmarter.com/results?callback=JSON_CALLBACK&limit=3')
+    getResults: () => $http.jsonp('http://api.playwhesmarter.com/results?callback=JSON_CALLBACK&limit=4')
   }
 }])
 
