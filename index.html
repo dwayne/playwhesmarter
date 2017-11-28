@@ -24,7 +24,6 @@
   <meta name="generator" content="Nanoc 4.8.12">
 
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Russo+One|Shojumaru">
   <link rel="stylesheet" href="/style.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
@@ -41,36 +40,40 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<header class="pws-header">
-  <h1>Play Whe <span>Smarter</span></h1>
-  <h2>The smarter way to play Play Whe</h2>
+<header class="mt-4 mb-5 text-center">
+  <h1 class="title">Play Whe <span class="playwhe-red">Smarter</span></h1>
+  <h2 class="subtitle">The smarter way to play Play Whe</h2>
 </header>
 
-<div class="social-buttons">
-  <div class="social-buttons__button">
+<div class="mb-5">
+  <div class="d-flex flex-row flex-wrap justify-content-center">
+  <div class="mr-2 mb-2">
     <div class="fb-like" data-href="http://www.playwhesmarter.com/" data-width="450" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
   </div>
-  <div class="social-buttons__button">
+  <div>
     <a href="https://twitter.com/playwhesmarter" class="twitter-follow-button" data-show-count="true">Follow @playwhesmarter</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   </div>
 </div>
 
+</div>
 
-<div class="playwhe-results" ng-app="PlayWheSmarter" ng-controller="PlayWheResultsCtrl">
-  <div ng-repeat="result in results">
-    <div class="playwhe-results__result">
-      <div class="time-of-day" title="{{result.period | timeOfDay:true}}">{{result.period | timeOfDay}}</div>
-      <div class="number" title="{{result.number | spirit}}">{{result.number}}</div>
-      <div class="playwhe-results__result-footer">
-        <div class="draw">Draw no. {{result.draw}}</div>
-        <div class="date">{{result.date | date:'MMM d, yyyy'}}</div>
+<div class="mb-5">
+  <div class="d-flex flex-row flex-wrap justify-content-center" ng-app="PlayWheSmarter" ng-controller="PlayWheResultsCtrl">
+    <div ng-repeat="result in results">
+      <div class="playwhe-result">
+        <div class="time-of-day" title="{{result.period | timeOfDay:true}}">{{result.period | timeOfDay}}</div>
+        <div class="number" title="{{result.number | spirit}}">{{result.number}}</div>
+        <div class="d-flex flex-row flex-wrap justify-content-between align-content-between align-items-stretch">
+          <div class="draw">Draw no. {{result.draw}}</div>
+          <div class="date">{{result.date | date:'MMM d, yyyy'}}</div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="pws-footer">
+<footer class="text-center">
   <p><a href="https://goo.gl/UggQDG" target="_blank" title="Coming Soon | View past results">Click here to view <em>every</em> Play Whe result that ever played</a></p>
   <p>Created by <a href="http://goo.gl/MW00k" target="_blank" title="Play Whe Smarter's Facebook Page">Play Whe Smarter</a></p>
 </footer>
