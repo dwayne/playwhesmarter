@@ -62,5 +62,5 @@ app.filter('spirit', () => {
 app.controller('PlayWheResultsCtrl', ['$scope', 'PlayWheAPI', ($scope, PlayWheAPI) => {
   $scope.results = []
 
-  return PlayWheAPI.getResults().success((data) => $scope.results = data)
+  return PlayWheAPI.getResults().success((data) => $scope.results = data.results)
 }])
