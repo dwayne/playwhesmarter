@@ -1,3 +1,9 @@
+environments:
+  default:
+    api_host: http://localhost:5000
+  prod:
+    api_host: http://api.playwhesmarter.com
+
 # The syntax to use for patterns in the Rules file. Can be either `"glob"`
 # (default) or `"legacy"`. The former will enable glob patterns, which behave
 # like Ruby’s File.fnmatch. The latter will enable Nanoc 3.x-style patterns.
@@ -32,7 +38,7 @@ prune:
   # Which files and directories you want to exclude from pruning. If you version
   # your output directory, you should probably exclude VCS directories such as
   # .git, .svn etc.
-  exclude: [ '.git', '.hg', '.svn', 'CVS', 'playwhesmarter.js', 'style.css' ]
+  exclude: [ '.git', '.hg', '.svn', 'CVS', 'js', 'style.css' ]
 
 # The data sources where Nanoc loads its data from. This is an array of
 # hashes; each array element represents a single data source. By default,

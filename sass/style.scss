@@ -1,93 +1,46 @@
-@import url('https://fonts.googleapis.com/css?family=Russo+One|Shojumaru');
 @import 'bootstrap';
 
-$russo-one-font-family: 'Russo One', sans-serif;
-$shojumaru-font-family: 'Shojumaru', cursive;
-
-$white: #fff;
-$black: #333;
-$playwhe-red: #e11923;
-$playwhe-blue: #0d0e2a;
-
-.playwhe-red {
-  color: $playwhe-red;
+.mb-5x {
+  margin-bottom: 5rem!important;
 }
 
-body {
-  font-family: $russo-one-font-family;
-  font-size: 14px;
-  line-height: 1.4em;
-  letter-spacing: 1px;
-  background: $white url('images/bg.png');
-  color: $playwhe-blue;
-  text-shadow: 0px 1px 3px $black;
+.w-auto {
+  width: auto!important;
 }
 
-a, a:hover, a:visited {
-  color: $playwhe-blue;
-  text-decoration: none;
-  border-bottom: 1px dashed $playwhe-blue;
+.unlinkify,
+a:link.unlinkify,
+a:visited.unlinkify,
+a:hover.unlinkify,
+a:active.unlinkify {
+  color: inherit!important;
+  text-decoration: none!important;
 }
 
-.title {
-  font-family: $shojumaru-font-family;
-  font-size: 2em;
-  line-height: 1.2;
-
-  @include media-breakpoint-up(sm) {
-    font-size: 3em;
-  }
-
-  @include media-breakpoint-up(lg) {
-    font-size: 5em;
-  }
+.social-facebook,
+a:link.social-facebook,
+a:visited.social-facebook {
+  color: #3b5998;
 }
 
-.subtitle {
-  font-size: 1.1em;
-  line-height: 1.2;
-
-  @include media-breakpoint-up(sm) {
-    font-size: 1.75em;
-  }
-
-  @include media-breakpoint-up(lg) {
-    font-size: 2.5em;
-  }
+a:hover.social-facebook,
+a:active.social-facebook,
+a:focus.social-facebook {
+  color: #344e86;
 }
 
-.playwhe-result {
-  margin: 0 15px 25px 15px;
-  padding: 5px;
+.social-twitter,
+a:link.social-twitter,
+a:visited.social-twitter {
+  color: #1da1f2;
+}
 
-  width: 250px;
-  border: 2px solid #b2a600;
-  background: #fae900;
-  border-radius: 10px;
-  box-shadow: 2px 2px 20px 2px #b2a600;
+a:hover.social-twitter,
+a:active.social-twitter,
+a:focus.social-twitter {
+  color: #0d95e8;
+}
 
-  font-size: 0.825em;
-  line-height: 1.2;
-
-  .time-of-day {
-    margin-bottom: 5px;
-    text-align: center;
-  }
-
-  .number {
-    margin-bottom: 5px;
-    text-align: center;
-    font-family: $shojumaru-font-family;
-    font-size: 11.2em;
-    text-shadow: 0px 3px 5px $black;
-  }
-
-  .time-of-day, .draw, .date {
-    color: $playwhe-red;
-    text-shadow: 0px 1px 1px $white;
-  }
-
-  @include media-breakpoint-up(lg) {
-    margin: 0 20px 25px 20px;
-  }
+.social-media-buttons .list-inline-item:not(:last-child) {
+  margin-right: 10px;
 }

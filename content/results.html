@@ -1,0 +1,31 @@
+---
+title: "Play Whe results - Search, filter and sort through all Play Whe results | Play Whe Smarter"
+description: "Search, filter and sort through all Play Whe results. Find out what played yesterday, last week, last month, last year or any other time."
+---
+
+<div class="mb-5x">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="mb-4">
+        <h2>Search the Play Whe results</h2>
+
+        <p>Use the form below to search, filter and sort through all the Play Whe results. Find out what played yesterday, last week, last month, last year or any other time. Go as far back as the first draw on the 4th of July, 1994. Figure out the hidden patterns and discover what marks to play.</p>
+
+        <p>Have fun and may the mark be with you.</p>
+      </div>
+      <div class="mb-5x">
+        <div id="search"></div>
+        <script src="/js/search.js"></script>
+        <script>
+          var root = document.getElementById('search');
+          Elm.Search.embed(root, { api: '<%= @config[:api_host] %>' });
+        </script>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="text-center">
+        <a href="https://goo.gl/BF1gWY" title="DraftKings | Daily Fantasy Sports For Cash" target="_blank"><img class="img-fluid" src="/images/ads/draftkings.png" alt="DraftKings | Daily Fantasy Sports For Cash"></a>
+      </div>
+    </div>
+  </div>
+</div>

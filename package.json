@@ -4,19 +4,19 @@
   "private": true,
   "description": "The Play Whe Smarter website.",
   "scripts": {
-    "build": "npm run build:js && npm run build:css",
-    "build:js": "babel js -d output",
+    "build": "npm run build:widgets && npm run build:css",
+    "build:widgets": "npm run build:widgets:dashboard && npm run build:widgets:search",
+    "build:widgets:dashboard": "elm make widgets/Dashboard.elm --output=./output/js/dashboard.js",
+    "build:widgets:search": "elm make widgets/Search.elm --output=./output/js/search.js",
     "build:css": "node-sass --include-path node_modules/bootstrap/scss -o output sass && postcss output/*.css -u autoprefixer -d output",
-    "build:prod": "npm run build:js:prod && npm run build:css:prod",
-    "build:js:prod": "BABEL_ENV=production babel js -d output",
+    "build:prod": "npm run build:widgets && npm run build:css:prod",
     "build:css:prod": "node-sass --include-path node_modules/bootstrap/scss -x -o output sass && postcss output/*.css -u autoprefixer -u cssnano --no-map -d output"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-minify": "^0.2.0",
     "bootstrap": "^4.0.0-beta.2",
+    "cssnano": "^3.10.0",
+    "elm": "^0.18.0",
     "node-sass": "^4.7.2",
     "postcss-cli": "^4.1.1"
   }
