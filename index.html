@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    
+      <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-28221689-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -16,67 +15,122 @@
   gtag('config', 'UA-28221689-1');
 </script>
 
-  
+    
 
-  <title>Play Whe Smarter - The smarter way to play Play Whe</title>
-  <meta name="description" content="View Play Whe results for today's morning, midday, afternoon and evening draws. Get access to all past Play Whe results as well.">
-  <meta name="author" content="Dwayne Crooks">
-  <meta name="generator" content="Nanoc 4.8.12">
+    <title>Play Whe Smarter - The smarter way to play Play Whe</title>
 
-  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/style.css">
+    <meta name="description" content="View today's morning, midday, afternoon and evening draws for the Trinidad & Tobago NLCB Play Whe as well as all previous Play Whe results.">
+    <meta name="author" content="Dwayne Crooks">
+    <meta name="generator" content="Nanoc 4.8.12">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-  <script src="/playwhesmarter.js"></script>
-</head>
-<body>
-  <div id="fb-root"></div>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.2/css/all.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <!-- Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=404438466305922";
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1238118876332200';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<header class="mt-4 mb-5 text-center">
-  <h1 class="title">Play Whe <span class="playwhe-red">Smarter</span></h1>
-  <h2 class="subtitle">The smarter way to play Play Whe</h2>
-</header>
+    <div class="container">
+      <!-- Site header -->
+<section class="mt-3 mb-5x">
+  <!-- Title and tagline -->
+  <header class="mb-3 text-center">
+    <h1><a href="/" class="unlinkify">Play Whe Smarter</a></h1>
+    <h2>The smarter way to play Play Whe</h2>
+  </header>
 
-<div class="mb-5">
+  <!-- Social proof -->
   <div class="d-flex flex-row flex-wrap justify-content-center">
-  <div class="mr-2 mb-2">
     <div class="fb-like" data-href="http://www.playwhesmarter.com/" data-width="450" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
-  </div>
-  <div>
-    <a href="https://twitter.com/playwhesmarter" class="twitter-follow-button" data-show-count="true">Follow @playwhesmarter</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-  </div>
-</div>
-
-</div>
-
-<div class="mb-5">
-  <div class="d-flex flex-row flex-wrap justify-content-center" ng-app="PlayWheSmarter" ng-controller="PlayWheResultsCtrl">
-    <div ng-repeat="result in results">
-      <div class="playwhe-result">
-        <div class="time-of-day" title="{{result.period | timeOfDay:true}}">{{result.period | timeOfDay}}</div>
-        <div class="number" title="{{result.number | spirit}}">{{result.number}}</div>
-        <div class="d-flex flex-row flex-wrap justify-content-between align-content-between align-items-stretch">
-          <div class="draw">Draw no. {{result.draw}}</div>
-          <div class="date">{{result.date | date:'MMM d, yyyy'}}</div>
-        </div>
-      </div>
+    <div class="mt-1 ml-2">
+      <a href="https://twitter.com/playwhesmarter?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="true">Follow @playwhesmarter</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
   </div>
-</div>
+</section>
 
-<footer class="text-center">
-  <p><a href="https://goo.gl/UggQDG" target="_blank" title="Coming Soon | View past results">Click here to view <em>every</em> Play Whe result that ever played</a></p>
-  <p>Created by <a href="http://goo.gl/MW00k" target="_blank" title="Play Whe Smarter's Facebook Page">Play Whe Smarter</a></p>
+      
+<section class="mb-5x">
+  <!-- Prominent display of latest results -->
+  <div id="dashboard"></div>
+  <script src="/js/dashboard.js"></script>
+  <script>
+    var root = document.getElementById('dashboard');
+    Elm.Dashboard.embed(root, { api: 'http://api.playwhesmarter.com' });
+  </script>
+
+  <!-- Ad space -->
+  <div class="text-center mb-4">
+    <a href="https://goo.gl/TiM9yi" title="The House of Angostura | The Season To Sip And Share" target="_blank"><img class="img-fluid" src="/images/ads/angostura.gif" alt="The House of Angostura | The Season To Sip And Share"></a>
+  </div>
+
+  <!-- Call to action -->
+  <div class="text-center">
+    <a href="/results" title="Search, filter and sort through Play Whe results" class="btn btn-danger">View more results</a>
+  </div>
+</section>
+
+<!-- About -->
+<section class="mb-5x text-center">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2 class="mb-3">Did you know?</h2>
+
+      <p class="mb-4">Play&nbsp;Whe&nbsp;Smarter is a website dedicated to the Trinidad&nbsp;&amp;&nbsp;Tobago NLCB Play&nbsp;Whe. Everyday we bring you the Play&nbsp;Whe results for the morning, midday, afternoon and evening draws. We also provide you with a user friendly <a href="/results" title="Search, filter and sort through Play Whe results">tool</a> for searching, filtering and sorting through our database of past Play&nbsp;Whe results.</p>
+
+      <h3 class="h4">We're on social media too!</h3>
+      <p>You can find us on <a href="https://www.facebook.com/playwhesmarter" title="The Play Whe Smarter Facebook page">Facebook</a> and <a href="https://twitter.com/playwhesmarter" title="The Play Whe Smarter Twitter page">Twitter</a>.</p>
+
+      <ul class="list-inline social-media-buttons">
+        <li class="list-inline-item">
+          <a href="https://www.facebook.com/playwhesmarter" title="The Play Whe Smarter Facebook page" class="social-facebook">
+            <i class="fab fa-facebook fa-3x"></i>
+          </a>
+        </li>
+        <li class="list-inline-item">
+          <a href="https://twitter.com/playwhesmarter" title="The Play Whe Smarter Twitter page" class="social-twitter">
+            <i class="fab fa-twitter-square fa-3x"></i>
+          </a>
+        </li>
+      </ul>
+
+      <p class="mb-4">Remember to like our <a href="https://www.facebook.com/playwhesmarter" title="The Play Whe Smarter Facebook page">Facebook page</a> and follow us on <a href="https://twitter.com/playwhesmarter" title="The Play Whe Smarter Twitter page">Twitter</a>.</p>
+
+      <h3 class="h4">Spread the word!</h3>
+      <p>Tell your friends about us so that we can all help each other get better (and smarter) at Play&nbsp;Whe.</p>
+
+      <div class="mb-4">
+        <div class="fb-like" data-href="http://www.playwhesmarter.com/" data-layout="standard" data-action="recommend" data-size="large" data-show-faces="true" data-share="false"></div>
+      </div>
+
+      <h3 class="h4">Thanks!</h3>
+      <p>Thank you for visiting and supporting us. May the mark be with you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Ad space -->
+<section class="mb-5x text-center">
+  <a href="https://goo.gl/7ypbub" title="Pole Candy | Pole Dance Clothes" target="_blank"><img class="img-fluid" src="/images/ads/polecandy.jpg" alt="Pole Candy | Pole Dance Clothes"></a>
+</section>
+
+      <!-- Credits -->
+<footer class="mb-3 text-center" style="font-size: 0.8rem">
+  <p class="mb-1"><a href="/">Play&nbsp;Whe&nbsp;Smarter</a> is a project designed, developed and maintained by <a href="http://www.dwaynecrooks.com/">Dwayne&nbsp;Crooks</a>.</p>
+  <p class="mb-1">Built with <a href="https://nanoc.ws/">Nanoc</a> and <a href="http://getbootstrap.com/">Bootstrap</a>.</p>
+  <p class="mb-1">Hosted on <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+  <p class="mb-1">Made with <span class="text-danger"><i class="fas fa-heart"></i></span> in T&amp;T.</p>
+  <p><small class="text-muted">&copy; 2011-2017</small></p>
 </footer>
 
-</body>
+    </div>
+  </body>
 </html>
