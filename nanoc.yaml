@@ -1,8 +1,12 @@
 environments:
   default:
+    web_host: http://localhost:3000
     api_host: http://localhost:5000
+    fb_app_id: 1238118876332200
   prod:
+    web_host: http://www.playwhesmarter.com
     api_host: http://api.playwhesmarter.com
+    fb_app_id: 1238118876332200
 
 # The syntax to use for patterns in the Rules file. Can be either `"glob"`
 # (default) or `"legacy"`. The former will enable glob patterns, which behave

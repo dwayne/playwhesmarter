@@ -14,6 +14,26 @@
     <meta name="author" content="Dwayne Crooks">
     <meta name="generator" content="Nanoc <%= Nanoc::VERSION %>">
 
+    <!-- Facebook Open Graph Markup (https://developers.facebook.com/docs/sharing/webmasters/#markup) -->
+    <meta property="og:url" content="<%= @item[:og_url] || @config[:web_host] + @item.path %>">
+    <meta property="og:type" content="<%= @item[:og_type] || 'website' %>">
+    <meta property="og:title" content="<%= @item[:og_title] || @item[:title] %>">
+    <meta property="og:description" content="<%= @item[:og_description] || @item[:description] %>">
+    <meta property="og:image:url" content="<%= @item[:og_image_url] || @config[:web_host] + '/images/playwhe-logo-200x200.png' %>">
+    <meta property="og:image:type" content="<%= @item[:og_image_type] || 'image/png' %>">
+    <meta property="og:image:alt" content="<%= @item[:og_image_alt] || 'The Play Whe logo' %>">
+    <meta property="og:image:width" content="<%= @item[:og_image_width] || '200' %>">
+    <meta property="og:image:height" content="<%= @item[:og_image_height] || '200' %>">
+    <meta property="fb:app_id" content="<%= @config[:fb_app_id] %>">
+
+    <!-- Twitter Card Markup (https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards) -->
+    <meta name="twitter:card" content="<%= @item[:twitter_card] || 'summary' %>">
+    <meta name="twitter:site" content="@playwhesmarter">
+    <meta name="twitter:title" content="<%= @item[:twitter_title] || @item[:og_title] || @item[:title] %>">
+    <meta name="twitter:description" content="<%= @item[:twitter_description] || @item[:og_description] || @item[:description] %>">
+    <meta name="twitter:image" content="<%= @item[:twitter_image] || @item[:og_image_url] || @config[:web_host] + '/images/playwhe-logo-200x200.png' %>">
+    <meta name="twitter:image:alt" content="<%= @item[:twitter_image_alt] || @item[:og_image_alt] || 'The Play Whe logo' %>">
+
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.2/css/all.css">
     <link rel="stylesheet" href="/style.css">

@@ -1,3 +1,7 @@
+User-agent: Twitterbot
+Disallow: *
+Allow: /images/
+
 User-agent: *
 Disallow: /images/
 Disallow: /CNAME
