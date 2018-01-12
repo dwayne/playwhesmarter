@@ -80,22 +80,35 @@
       
 <section class="mb-5x">
   <!-- Prominent display of latest results -->
-  <div id="dashboard"></div>
+  <div id="latest-results"></div>
   <script src="/js/dashboard.js"></script>
   <script>
-    var root = document.getElementById('dashboard');
+    var root = document.getElementById('latest-results');
     Elm.Dashboard.embed(root, { api: 'http://api.playwhesmarter.com' });
   </script>
-
-  <!-- Ad space -->
-  <div class="text-center mb-4">
-    <a href="https://goo.gl/TiM9yi" title="The House of Angostura | The Season To Sip And Share" target="_blank"><img class="img-fluid" src="/images/ads/angostura.gif" alt="The House of Angostura | The Season To Sip And Share"></a>
-  </div>
 
   <!-- Call to action -->
   <div class="text-center">
     <a href="/results" title="Search, filter and sort through Play Whe results" class="btn btn-danger">View more results</a>
   </div>
+</section>
+
+<!-- Ad space -->
+<div class="mb-5x text-center">
+  <a href="https://goo.gl/TiM9yi" title="The House of Angostura | The Season To Sip And Share" target="_blank"><img class="img-fluid" src="/images/ads/angostura.gif" alt="The House of Angostura | The Season To Sip And Share"></a>
+</div>
+
+<!-- Favourite/Backup marks and lines -->
+<div id="suggestions"></div>
+<script src="/js/suggestions.js"></script>
+<script>
+  var root = document.getElementById('suggestions');
+  Elm.Suggestions.embed(root, { api: 'http://api.playwhesmarter.com' });
+</script>
+
+<!-- Ad space -->
+<section class="mb-5x text-center">
+  <a href="https://goo.gl/jh7XzA" title="My Digicel | Get unlimited prepaid talk per call from as low as $1" target="_blank"><img class="img-fluid" src="/images/ads/my-digicel.jpg" alt="My Digicel | Get unlimited prepaid talk per call from as low as $1"></a>
 </section>
 
 <!-- About -->
@@ -139,7 +152,7 @@
 
 <!-- Ad space -->
 <section class="mb-5x text-center">
-  <a href="https://goo.gl/jh7XzA" title="My Digicel | Get unlimited prepaid talk per call from as low as $1" target="_blank"><img class="img-fluid" src="/images/ads/my-digicel.jpg" alt="My Digicel | Get unlimited prepaid talk per call from as low as $1"></a>
+  <a href="https://goo.gl/4XxTEF" title="Ultra Lubricants | When you need better than the best" target="_blank"><img class="img-fluid" src="/images/ads/ultra-lubricants.jpg" alt="Ultra Lubricants | When you need better than the best"></a>
 </section>
 
       <!-- Credits -->
