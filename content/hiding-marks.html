@@ -1,0 +1,70 @@
+---
+title: "Hiding Marks - Find out which marks haven't played in a long time | Play Whe Smarter"
+description: "Many numbers haven't played in a long time. Find out which ones they are and run them down."
+og_title: "Hiding Marks"
+---
+
+<div class="mb-5x">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="mb-4">
+        <h2>Hiding marks</h2>
+
+        <p>(<a href="#hiding-marks">Click here to skip to the table</a>)</p>
+
+        <p>Find out which marks haven't played in a long time. We call these marks <strong>hiding marks</strong>. And, we say that they are <strong>hidden</strong>.</p>
+
+        <p>Hiding marks have a high chance of playing in the next draw, so run them down.</p>
+
+        <h3>How to find hiding marks?</h3>
+
+        <ol>
+          <li>Firstly, sort all the Play Whe results for the last month or two by descending order of date (i.e. most recent date first).</li>
+          <li>Write them down on a piece of paper.</li>
+          <li>Go through the list from top to bottom taking note of ONLY the first time you see a given mark in the list. That's the last time the mark played.</li>
+          <li>Repeat the previous step for every mark. Since there are 36 marks you've got to do it 36 times.</li>
+          <li>Finally, the last mark you find is the mark that hasn't played in the longest time. That's your TOP hiding mark and a mark you should probably run down.</li>
+        </ol>
+
+        <h3>We're here to help</h3>
+
+        <p>Whew! That's a lot of work to do to find hiding marks. Thankfully, we're here to help. We've done all that hard work for you.</p>
+
+        <p>The <a href="#hiding-marks">table below</a> lists the last time each mark has played. The top mark hasn't played in the longest time and the bottom mark has played most recently. So! That means the top marks in the list are hiding marks.
+
+        <h3>Our recommendation</h3>
+
+        <p>We consider the top 5 to 10 marks to be legitimate hiding marks. Our recommendation is to pick a couple of them and run them down since they have a high chance of coming in the next draw.</p>
+
+        <h3>Spread the word!</h3>
+
+        <p>Tell your friends about us so that we can all help each other get better (and smarter) at Play&nbsp;Whe.</p>
+
+        <div class="mb-4">
+          <div class="fb-like" data-href="http://www.playwhesmarter.com/" data-layout="standard" data-action="recommend" data-size="large" data-show-faces="true" data-share="false"></div>
+        </div>
+
+        <h3>Thanks!</h3>
+
+        <p>Thank you for vising and supporting us. Have fun figuring out what will play next and may the mark be with you.</p>
+
+        <div class="alert alert-success" role="alert">
+          <strong>N.B.</strong> <em>The table is updated daily. So check here everyday for the lastest changes.</em>
+        </div>
+      </div>
+      <div class="mb-5x">
+        <div id="hiding-marks"></div>
+        <script src="/js/hiding-marks.js"></script>
+        <script>
+          var root = document.getElementById('hiding-marks');
+          Elm.HidingMarks.embed(root, { api: '<%= @config[:api_host] %>' });
+        </script>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="text-center">
+        <a href="https://goo.gl/Fuiacz" title="bmobile | We give you everything to keep connected" target="_blank"><img class="img-fluid" src="/images/ads/bmobile-everything-plan.jpg" alt="bmobile | We give you everything to keep connected"></a>
+      </div>
+    </div>
+  </div>
+</div>
