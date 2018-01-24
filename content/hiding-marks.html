@@ -10,7 +10,7 @@ og_title: "Hiding Marks"
       <div class="mb-4">
         <h2>Hiding marks</h2>
 
-        <p>(<a href="#hiding-marks">Click here to skip to the table</a>)</p>
+        <p>(<a href="#hiding-marks">Click here to skip to the tables</a>)</p>
 
         <p>Find out which marks haven't played in a long time. We call these marks <strong>hiding marks</strong>. And, we say that they are <strong>hidden</strong>.</p>
 
@@ -30,7 +30,7 @@ og_title: "Hiding Marks"
 
         <p>Whew! That's a lot of work to do to find hiding marks. Thankfully, we're here to help. We've done all that hard work for you.</p>
 
-        <p>The <a href="#hiding-marks">table below</a> lists the last time each mark has played. The top mark hasn't played in the longest time and the bottom mark has played most recently. So! That means the top marks in the list are hiding marks.
+        <p>The <a href="#hiding-marks">tables below</a> list the last time each mark has played. The tables are broken down into "Top 5 Hiding Marks", "Next 5 Hiding Marks" and "The Rest". Each table is sorted by descending order of date, i.e. the top mark hasn't played in the longest time.
 
         <h3>Our recommendation</h3>
 
@@ -49,7 +49,7 @@ og_title: "Hiding Marks"
         <p>Thank you for vising and supporting us. Have fun figuring out what will play next and may the mark be with you.</p>
 
         <div class="alert alert-success" role="alert">
-          <strong>N.B.</strong> <em>The table is updated daily. So check here everyday for the lastest changes.</em>
+          <strong>N.B.</strong> <em>The tables are updated daily. So, check here everyday for the lastest changes.</em>
         </div>
       </div>
       <div class="mb-5x">
@@ -57,7 +57,7 @@ og_title: "Hiding Marks"
         <script src="/js/hiding-marks.js"></script>
         <script>
           var root = document.getElementById('hiding-marks');
-          Elm.HidingMarks.embed(root, { api: '<%= @config[:api_host] %>' });
+          Elm.HidingMarks.embed(root, { endpoint: '<%= @config[:api_host] %>/stats/marks-last-draw' });
         </script>
       </div>
     </div>
