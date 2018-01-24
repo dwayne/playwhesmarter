@@ -3,6 +3,5 @@ Disallow: *
 Allow: /images/
 
 User-agent: *
-Disallow: /images/
 Disallow: /CNAME
 Sitemap: http://www.playwhesmarter.com/sitemap.txt
