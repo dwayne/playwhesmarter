@@ -2,16 +2,18 @@ module Search exposing (main)
 
 import Date exposing (Date)
 import Dict exposing (Dict)
+import Erl.Query as Query
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Http
 import Json.Decode as Decode exposing (Decoder)
+import Navigation
 import Task
 
 main : Program Flags Model Msg
 main =
-    Html.programWithFlags
+    Navigation.programWithFlags SetLocation
         { init = init
         , update = update
         , view = view
@@ -24,7 +26,8 @@ type alias Flags =
     { api : String }
 
 type alias Model =
-    { searchForm : SearchForm
+    { currentLocation : Navigation.Location
+    , searchForm : SearchForm
     , api : String
     , currentDate : Maybe Date
     , response : Maybe PlayWheResponse
@@ -85,34 +88,88 @@ type Msg
     | SetLimit String
     | SetOrder String
     | SetDate (Maybe Date)
+    | SetLocation Navigation.Location
     | GetResults
     | GetPrevResults String
     | GetNextResults String
     | NewResults (Result Http.Error PlayWheResponse)
 
-init : Flags -> (Model, Cmd Msg)
-init { api } =
-    let
-        defaultForm =
-            { year = Nothing
-            , month = Nothing
-            , day = Nothing
-            , draw = Nothing
-            , time = Nothing
-            , mark = Nothing
-            , limit = defaultLimit
-            , order = defaultOrder
-            }
+init : Flags -> Navigation.Location -> (Model, Cmd Msg)
+init { api } location =
+  let
+    now = Task.perform (Just >> SetDate) Date.now
+  in
+    ( { currentLocation = location
+      , searchForm = toSearchForm location
+      , api = api
+      , currentDate = Nothing
+      , response = Nothing
+      }
+    , now
+    )
 
-        now = Task.perform (Just >> SetDate) Date.now
-    in
-        ( { searchForm = defaultForm
-          , api = api
-          , currentDate = Nothing
-          , response = Nothing
-          }
-        , now
-        )
+toSearchForm : Navigation.Location -> SearchForm
+toSearchForm { search } =
+  let
+    query =
+      Query.parse search
+
+    value key =
+      case Query.getValuesForKey key query of
+        [] ->
+          Nothing
+
+        (v::_) ->
+          Just v
+  in
+    { year = value "year" |> Maybe.andThen normalizeYear
+    , month = value "month" |> Maybe.andThen normalizeMonth
+    , day = value "day" |> Maybe.andThen normalizeDay
+    , draw = value "draw" |> Maybe.andThen normalizeDraw
+    , time = value "period" |> Maybe.andThen normalizeTime
+    , mark = value "number" |> Maybe.andThen normalizeMark
+    , limit = Maybe.withDefault defaultLimit (Maybe.map normalizeLimit (value "limit"))
+    , order = Maybe.withDefault defaultOrder (Maybe.map normalizeOrder (value "order"))
+    }
+
+toSearch : SearchForm -> String
+toSearch { year, month, day, draw, time, mark, limit, order } =
+  let
+    emptyQuery =
+      Query.parse ""
+
+    addMaybe key value query =
+      case value of
+        Nothing ->
+          query
+
+        Just value ->
+          Query.add key (toString value) query
+
+    add key value defaultValue query =
+      if value == defaultValue then
+        query
+      else
+        Query.add key value query
+
+    query =
+      emptyQuery
+        |> addMaybe "year" year
+        |> addMaybe "month" month
+        |> addMaybe "day" day
+        |> addMaybe "draw" draw
+        |> addMaybe "period" time
+        |> addMaybe "number" mark
+        |> add "limit" (limitToString limit) (limitToString defaultLimit)
+        |> add "order" (orderToString order) (orderToString defaultOrder)
+
+    search =
+      Query.toString query
+  in
+    if String.isEmpty search then
+      "?"
+    else
+      search
 
 defaultLimit : Int
 defaultLimit = 12
@@ -124,72 +181,99 @@ defaultOrder = DESC
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-    case msg of
-        SetDate d ->
-            ({ model | currentDate = d }, Cmd.none)
+  case msg of
+    SetDate d ->
+      ({ model | currentDate = d }, Cmd.none)
 
-        SetYear s ->
-            let
-                oldSearchForm = model.searchForm
-            in
-                ({ model | searchForm = { oldSearchForm | year = normalizeYear s }}, Cmd.none)
+    SetYear s ->
+      let
+        oldSearchForm = model.searchForm
+        newSearchForm = { oldSearchForm | year = normalizeYear s }
+      in
+        ( { model | searchForm = newSearchForm }
+        , Navigation.newUrl (toSearch newSearchForm)
+        )
 
-        SetMonth s ->
-            let
-                oldSearchForm = model.searchForm
-            in
-                ({ model | searchForm = { oldSearchForm | month = normalizeMonth s }}, Cmd.none)
+    SetMonth s ->
+      let
+        oldSearchForm = model.searchForm
+        newSearchForm = { oldSearchForm | month = normalizeMonth s }
+      in
+        ( { model | searchForm = newSearchForm }
+        , Navigation.newUrl (toSearch newSearchForm)
+        )
 
-        SetDay s ->
-            let
-                oldSearchForm = model.searchForm
-            in
-                ({ model | searchForm = { oldSearchForm | day = normalizeDay s }}, Cmd.none)
+    SetDay s ->
+      let
+        oldSearchForm = model.searchForm
+        newSearchForm = { oldSearchForm | day = normalizeDay s }
+      in
+        ( { model | searchForm = newSearchForm }
+        , Navigation.newUrl (toSearch newSearchForm)
+        )
 
-        SetDraw s ->
-            let
-                oldSearchForm = model.searchForm
-            in
-                ({ model | searchForm = { oldSearchForm | draw = normalizeDraw s }}, Cmd.none)
+    SetDraw s ->
+      let
+        oldSearchForm = model.searchForm
+        newSearchForm = { oldSearchForm | draw = normalizeDraw s }
+      in
+        ( { model | searchForm = newSearchForm }
+        , Navigation.newUrl (toSearch newSearchForm)
+        )
 
-        SetTime s ->
-            let
-                oldSearchForm = model.searchForm
-            in
-                ({ model | searchForm = { oldSearchForm | time = normalizeTime s }}, Cmd.none)
+    SetTime s ->
+      let
+        oldSearchForm = model.searchForm
+        newSearchForm = { oldSearchForm | time = normalizeTime s }
+      in
+        ( { model | searchForm = newSearchForm }
+        , Navigation.newUrl (toSearch newSearchForm)
+        )
 
-        SetMark s ->
-            let
-                oldSearchForm = model.searchForm
-            in
-                ({ model | searchForm = { oldSearchForm | mark = normalizeMark s }}, Cmd.none)
+    SetMark s ->
+      let
+        oldSearchForm = model.searchForm
+        newSearchForm = { oldSearchForm | mark = normalizeMark s }
+      in
+        ( { model | searchForm = newSearchForm }
+        , Navigation.newUrl (toSearch newSearchForm)
+        )
 
-        SetLimit s ->
-            let
-                oldSearchForm = model.searchForm
-            in
-                ({ model | searchForm = { oldSearchForm | limit = normalizeLimit s }}, Cmd.none)
+    SetLimit s ->
+      let
+        oldSearchForm = model.searchForm
+        newSearchForm = { oldSearchForm | limit = normalizeLimit s }
+      in
+        ( { model | searchForm = newSearchForm }
+        , Navigation.newUrl (toSearch newSearchForm)
+        )
 
-        SetOrder s ->
-            let
-                oldSearchForm = model.searchForm
-            in
-                ({ model | searchForm = { oldSearchForm | order = normalizeOrder s }}, Cmd.none)
+    SetOrder s ->
+      let
+        oldSearchForm = model.searchForm
+        newSearchForm = { oldSearchForm | order = normalizeOrder s }
+      in
+        ( { model | searchForm = newSearchForm }
+        , Navigation.newUrl (toSearch newSearchForm)
+        )
 
-        GetResults ->
-            (model, getResults (requestFromForm model.api model.searchForm))
+    SetLocation location ->
+        ({ model | currentLocation = location, searchForm = toSearchForm location }, Cmd.none)
 
-        GetPrevResults p ->
-            (model, getResults (requestFromPath model.api p))
+    GetResults ->
+        (model, getResults (requestFromForm model.api model.searchForm))
 
-        GetNextResults p ->
-            (model, getResults (requestFromPath model.api p))
+    GetPrevResults p ->
+        (model, getResults (requestFromPath model.api p))
 
-        NewResults (Ok response) ->
-            ({ model | response = Just response }, Cmd.none)
+    GetNextResults p ->
+        (model, getResults (requestFromPath model.api p))
 
-        NewResults (Err e) ->
-            Debug.log (toString e) (model, Cmd.none)
+    NewResults (Ok response) ->
+        ({ model | response = Just response }, Cmd.none)
+
+    NewResults (Err e) ->
+        Debug.log (toString e) (model, Cmd.none)
 
 normalizeYear : String -> Maybe Int
 normalizeYear year =
@@ -466,7 +550,7 @@ byYear currentDate year =
 
                 Just d ->
                     select [ class "form-control", onInput SetYear ]
-                        <| List.append [ option [ selected ("" == y) ] [] ]
+                        <| List.append [ option [ selected ("" == y) ] [ text "All years" ] ]
                         <| List.reverse
                         <| List.map (toString >> toOption) (years (Date.year d))
             ]
@@ -485,7 +569,7 @@ byMonth month =
         options = months
             |> Dict.map toOption
             |> Dict.values
-            |> List.append [ option [ selected ("" == m) ] [] ]
+            |> List.append [ option [ selected ("" == m) ] [ text "All months" ] ]
     in
         formGroup
             [ label [] [ text "By month" ]
@@ -502,7 +586,7 @@ byDay day =
         formGroup
             [ label [] [ text "By day" ]
             , select [ class "form-control", onInput SetDay ]
-                <| List.append [ option [ selected ("" == d) ] [] ]
+                <| List.append [ option [ selected ("" == d) ] [ text "All days" ] ]
                 <| List.map (toString >> toOption) days
             ]
 
@@ -534,12 +618,12 @@ byDraw draw =
 byTime : Maybe Period -> Html Msg
 byTime time =
     let
-        t = timeToString time
+        t = String.toLower (timeToString time)
     in
         formGroup
             [ label [] [ text "By time of day" ]
             , select [ class "form-control", onInput SetTime ]
-                [ option [ selected ("" == t) ] []
+                [ option [ selected ("" == t) ] [ text "All times of day" ]
                 , option [ value "em", selected ("em" == t) ] [ text "Morning (10:30am)" ]
                 , option [ value "am", selected ("am" == t) ] [ text "Midday (1:00pm)" ]
                 , option [ value "an", selected ("an" == t) ] [ text "Afternoon (4:00pm)" ]
@@ -561,7 +645,7 @@ byMark mark =
         options = marks
             |> Dict.map toOption
             |> Dict.values
-            |> List.append [ option [ selected ("" == m) ] [] ]
+            |> List.append [ option [ selected ("" == m) ] [ text "All marks" ] ]
     in
         formGroup
             [ label [] [ text "By mark" ]
@@ -597,7 +681,7 @@ limitOptions limit =
 orderOptions : Ordering -> Html Msg
 orderOptions order =
     let
-        o = orderToString order
+        o = String.toLower (orderToString order)
     in
         select [ class "form-control d-inline w-auto", onInput SetOrder ]
             [ option [ value "desc", selected ("desc" == o) ] [ text "descending" ]
