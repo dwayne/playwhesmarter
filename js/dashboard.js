@@ -8918,29 +8918,57 @@ var _elm_lang$http$Http$StringPart = F2(
 	});
 var _elm_lang$http$Http$stringPart = _elm_lang$http$Http$StringPart;
 
-var _dwayne$playwhesmarter$Dashboard$viewDraw = function (draw) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		{
+var _dwayne$playwhesmarter$PlayWhe$monthAbbrs = _elm_lang$core$Dict$fromList(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 1, _1: 'Jan'},
+		_1: {
 			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$small,
-				{
+			_0: {ctor: '_Tuple2', _0: 2, _1: 'Feb'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 3, _1: 'Mar'},
+				_1: {
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$class('text-muted'),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(
-						_elm_lang$core$Basics$toString(draw)),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _dwayne$playwhesmarter$Dashboard$marks = _elm_lang$core$Dict$fromList(
+					_0: {ctor: '_Tuple2', _0: 4, _1: 'Apr'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 5, _1: 'May'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 6, _1: 'Jun'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 7, _1: 'Jul'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 8, _1: 'Aug'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 9, _1: 'Sep'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 10, _1: 'Oct'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 11, _1: 'Nov'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 12, _1: 'Dec'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _dwayne$playwhesmarter$PlayWhe$spirits = _elm_lang$core$Dict$fromList(
 	{
 		ctor: '::',
 		_0: {ctor: '_Tuple2', _0: 1, _1: 'centipede'},
@@ -9086,11 +9114,116 @@ var _dwayne$playwhesmarter$Dashboard$marks = _elm_lang$core$Dict$fromList(
 			}
 		}
 	});
-var _dwayne$playwhesmarter$Dashboard$viewSpirit = function (number) {
-	var spirit = A2(
+var _dwayne$playwhesmarter$PlayWhe$monthAbbr = function (n) {
+	return A2(
+		_elm_lang$core$Maybe$withDefault,
+		'Unk',
+		A2(_elm_lang$core$Dict$get, n, _dwayne$playwhesmarter$PlayWhe$monthAbbrs));
+};
+var _dwayne$playwhesmarter$PlayWhe$formatPeriod = function (period) {
+	var _p0 = period;
+	switch (_p0) {
+		case 'EM':
+			return '10:30am';
+		case 'AM':
+			return '1:00pm';
+		case 'AN':
+			return '4:00pm';
+		case 'PM':
+			return '6:30pm';
+		default:
+			return '--:--';
+	}
+};
+var _dwayne$playwhesmarter$PlayWhe$formatDate = function (date) {
+	var ordinalIndicator = function (dd) {
+		var _p1 = dd;
+		switch (_p1) {
+			case '01':
+				return 'st';
+			case '21':
+				return 'st';
+			case '31':
+				return 'st';
+			case '02':
+				return 'nd';
+			case '22':
+				return 'nd';
+			case '03':
+				return 'rd';
+			case '23':
+				return 'rd';
+			default:
+				return 'th';
+		}
+	};
+	var day = function (dd) {
+		return A2(_elm_lang$core$String$startsWith, '0', dd) ? A2(_elm_lang$core$String$dropLeft, 1, dd) : dd;
+	};
+	var parts = A2(_elm_lang$core$String$split, '-', date);
+	var _p2 = parts;
+	if ((((_p2.ctor === '::') && (_p2._1.ctor === '::')) && (_p2._1._1.ctor === '::')) && (_p2._1._1._1.ctor === '[]')) {
+		var _p3 = _p2._1._1._0;
+		return A2(
+			_elm_lang$core$String$join,
+			' ',
+			{
+				ctor: '::',
+				_0: _dwayne$playwhesmarter$PlayWhe$monthAbbr(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(_p2._1._0))),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$core$Basics_ops['++'],
+						day(_p3),
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							ordinalIndicator(_p3),
+							',')),
+					_1: {
+						ctor: '::',
+						_0: _p2._0,
+						_1: {ctor: '[]'}
+					}
+				}
+			});
+	} else {
+		return 'Unknown';
+	}
+};
+var _dwayne$playwhesmarter$PlayWhe$spirit = function (n) {
+	return A2(
 		_elm_lang$core$Maybe$withDefault,
 		'unknown',
-		A2(_elm_lang$core$Dict$get, number, _dwayne$playwhesmarter$Dashboard$marks));
+		A2(_elm_lang$core$Dict$get, n, _dwayne$playwhesmarter$PlayWhe$spirits));
+};
+
+var _dwayne$playwhesmarter$Dashboard$viewDraw = function (draw) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$small,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('text-muted'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(
+						_elm_lang$core$Basics$toString(draw)),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _dwayne$playwhesmarter$Dashboard$viewSpirit = function (number) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
@@ -9101,7 +9234,8 @@ var _dwayne$playwhesmarter$Dashboard$viewSpirit = function (number) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text(spirit),
+					_0: _elm_lang$html$Html$text(
+						_dwayne$playwhesmarter$PlayWhe$spirit(number)),
 					_1: {ctor: '[]'}
 				}),
 			_1: {ctor: '[]'}
@@ -9129,107 +9263,6 @@ var _dwayne$playwhesmarter$Dashboard$viewNumber = function (number) {
 			_1: {ctor: '[]'}
 		});
 };
-var _dwayne$playwhesmarter$Dashboard$formatPeriod = function (period) {
-	var _p0 = period;
-	switch (_p0) {
-		case 'EM':
-			return '10:30am';
-		case 'AM':
-			return '1:00pm';
-		case 'AN':
-			return '4:00pm';
-		case 'PM':
-			return '6:30pm';
-		default:
-			return 'Unknown';
-	}
-};
-var _dwayne$playwhesmarter$Dashboard$monthAbbrs = _elm_lang$core$Dict$fromList(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: '01', _1: 'Jan'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: '02', _1: 'Feb'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: '03', _1: 'Mar'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: '04', _1: 'Apr'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: '05', _1: 'May'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: '06', _1: 'Jun'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: '07', _1: 'Jul'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: '08', _1: 'Aug'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: '09', _1: 'Sep'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: '10', _1: 'Oct'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: '11', _1: 'Nov'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: '12', _1: 'Dec'},
-													_1: {ctor: '[]'}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	});
-var _dwayne$playwhesmarter$Dashboard$formatDate = function (date) {
-	var day = function (dd) {
-		return A2(_elm_lang$core$String$startsWith, '0', dd) ? A2(_elm_lang$core$String$dropLeft, 1, dd) : dd;
-	};
-	var monthAbbr = function (mm) {
-		return A2(
-			_elm_lang$core$Maybe$withDefault,
-			'Unknown',
-			A2(_elm_lang$core$Dict$get, mm, _dwayne$playwhesmarter$Dashboard$monthAbbrs));
-	};
-	var parts = A2(_elm_lang$core$String$split, '-', date);
-	var _p1 = parts;
-	if ((((_p1.ctor === '::') && (_p1._1.ctor === '::')) && (_p1._1._1.ctor === '::')) && (_p1._1._1._1.ctor === '[]')) {
-		return A2(
-			_elm_lang$core$String$join,
-			' ',
-			{
-				ctor: '::',
-				_0: monthAbbr(_p1._1._0),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$core$Basics_ops['++'],
-						day(_p1._1._1._0),
-						','),
-					_1: {
-						ctor: '::',
-						_0: _p1._0,
-						_1: {ctor: '[]'}
-					}
-				}
-			});
-	} else {
-		return 'Unknown';
-	}
-};
 var _dwayne$playwhesmarter$Dashboard$viewDate = F2(
 	function (date, period) {
 		return A2(
@@ -9245,19 +9278,19 @@ var _dwayne$playwhesmarter$Dashboard$viewDate = F2(
 						_0: _elm_lang$html$Html$text(
 							A2(
 								_elm_lang$core$Basics_ops['++'],
-								_dwayne$playwhesmarter$Dashboard$formatDate(date),
+								_dwayne$playwhesmarter$PlayWhe$formatDate(date),
 								A2(
 									_elm_lang$core$Basics_ops['++'],
 									' at ',
-									_dwayne$playwhesmarter$Dashboard$formatPeriod(period)))),
+									_dwayne$playwhesmarter$PlayWhe$formatPeriod(period)))),
 						_1: {ctor: '[]'}
 					}),
 				_1: {ctor: '[]'}
 			});
 	});
-var _dwayne$playwhesmarter$Dashboard$viewResult = function (_p2) {
-	var _p3 = _p2;
-	var _p4 = _p3.number;
+var _dwayne$playwhesmarter$Dashboard$viewResult = function (_p0) {
+	var _p1 = _p0;
+	var _p2 = _p1.number;
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -9285,16 +9318,16 @@ var _dwayne$playwhesmarter$Dashboard$viewResult = function (_p2) {
 				},
 				{
 					ctor: '::',
-					_0: A2(_dwayne$playwhesmarter$Dashboard$viewDate, _p3.date, _p3.period),
+					_0: A2(_dwayne$playwhesmarter$Dashboard$viewDate, _p1.date, _p1.period),
 					_1: {
 						ctor: '::',
-						_0: _dwayne$playwhesmarter$Dashboard$viewNumber(_p4),
+						_0: _dwayne$playwhesmarter$Dashboard$viewNumber(_p2),
 						_1: {
 							ctor: '::',
-							_0: _dwayne$playwhesmarter$Dashboard$viewSpirit(_p4),
+							_0: _dwayne$playwhesmarter$Dashboard$viewSpirit(_p2),
 							_1: {
 								ctor: '::',
-								_0: _dwayne$playwhesmarter$Dashboard$viewDraw(_p3.draw),
+								_0: _dwayne$playwhesmarter$Dashboard$viewDraw(_p1.draw),
 								_1: {ctor: '[]'}
 							}
 						}
@@ -9303,65 +9336,86 @@ var _dwayne$playwhesmarter$Dashboard$viewResult = function (_p2) {
 			_1: {ctor: '[]'}
 		});
 };
-var _dwayne$playwhesmarter$Dashboard$view = function (_p5) {
-	var _p6 = _p5;
-	var _p7 = _p6.results;
-	if (_p7.ctor === 'Nothing') {
-		return A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('mb-4 text-center'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html$text('Loading...'),
-				_1: {ctor: '[]'}
-			});
-	} else {
-		return A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('d-flex flex-row flex-wrap justify-content-around'),
-				_1: {ctor: '[]'}
-			},
-			A2(_elm_lang$core$List$map, _dwayne$playwhesmarter$Dashboard$viewResult, _p7._0));
+var _dwayne$playwhesmarter$Dashboard$view = function (_p3) {
+	var _p4 = _p3;
+	var _p5 = _p4.results;
+	switch (_p5.ctor) {
+		case 'Loading':
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('mb-4 text-center'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Loading...'),
+					_1: {ctor: '[]'}
+				});
+		case 'Loaded':
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('d-flex flex-row flex-wrap justify-content-around'),
+					_1: {ctor: '[]'}
+				},
+				A2(_elm_lang$core$List$map, _dwayne$playwhesmarter$Dashboard$viewResult, _p5._0));
+		default:
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('mb-4'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('row'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('col-md-8 offset-md-2'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('alert alert-danger text-center'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('We seem to be experiencing some technical difficulties at the moment. Please check back in about 5 minutes. Hopefully the problem would be resolved by then.'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				});
 	}
 };
-var _dwayne$playwhesmarter$Dashboard$update = F2(
-	function (msg, model) {
-		var _p8 = msg;
-		if (_p8._0.ctor === 'Ok') {
-			return {
-				ctor: '_Tuple2',
-				_0: _elm_lang$core$Native_Utils.update(
-					model,
-					{
-						results: _elm_lang$core$Maybe$Just(_p8._0._0)
-					}),
-				_1: _elm_lang$core$Platform_Cmd$none
-			};
-		} else {
-			return A2(
-				_elm_lang$core$Debug$log,
-				_elm_lang$core$Basics$toString(_p8._0._0),
-				{
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{results: _elm_lang$core$Maybe$Nothing}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				});
-		}
-	});
 var _dwayne$playwhesmarter$Dashboard$Flags = function (a) {
 	return {api: a};
 };
 var _dwayne$playwhesmarter$Dashboard$Model = F2(
 	function (a, b) {
-		return {results: a, api: b};
+		return {api: a, results: b};
 	});
 var _dwayne$playwhesmarter$Dashboard$PlayWheResult = F4(
 	function (a, b, c, d) {
@@ -9374,28 +9428,63 @@ var _dwayne$playwhesmarter$Dashboard$decodePlayWheResult = A5(
 	A2(_elm_lang$core$Json_Decode$field, 'date', _elm_lang$core$Json_Decode$string),
 	A2(_elm_lang$core$Json_Decode$field, 'period', _elm_lang$core$Json_Decode$string),
 	A2(_elm_lang$core$Json_Decode$field, 'number', _elm_lang$core$Json_Decode$int));
-var _dwayne$playwhesmarter$Dashboard$decodePlayWheResponse = A2(
+var _dwayne$playwhesmarter$Dashboard$decodePlayWheResults = A2(
 	_elm_lang$core$Json_Decode$field,
 	'results',
 	_elm_lang$core$Json_Decode$list(_dwayne$playwhesmarter$Dashboard$decodePlayWheResult));
-var _dwayne$playwhesmarter$Dashboard$requestForLatest = function (api) {
-	var endpoint = A2(_elm_lang$core$Basics_ops['++'], api, '/results?limit=4');
-	return A2(_elm_lang$http$Http$get, endpoint, _dwayne$playwhesmarter$Dashboard$decodePlayWheResponse);
+var _dwayne$playwhesmarter$Dashboard$playWheResultsReq = function (api) {
+	return A2(
+		_elm_lang$http$Http$get,
+		A2(_elm_lang$core$Basics_ops['++'], api, '/results?limit=4'),
+		_dwayne$playwhesmarter$Dashboard$decodePlayWheResults);
 };
-var _dwayne$playwhesmarter$Dashboard$LatestResults = function (a) {
-	return {ctor: 'LatestResults', _0: a};
+var _dwayne$playwhesmarter$Dashboard$Error = {ctor: 'Error'};
+var _dwayne$playwhesmarter$Dashboard$Loaded = function (a) {
+	return {ctor: 'Loaded', _0: a};
 };
-var _dwayne$playwhesmarter$Dashboard$getResults = function (request) {
-	return A2(_elm_lang$http$Http$send, _dwayne$playwhesmarter$Dashboard$LatestResults, request);
+var _dwayne$playwhesmarter$Dashboard$update = F2(
+	function (msg, model) {
+		var _p6 = msg;
+		if (_p6._0.ctor === 'Ok') {
+			return {
+				ctor: '_Tuple2',
+				_0: _elm_lang$core$Native_Utils.update(
+					model,
+					{
+						results: _dwayne$playwhesmarter$Dashboard$Loaded(_p6._0._0)
+					}),
+				_1: _elm_lang$core$Platform_Cmd$none
+			};
+		} else {
+			return A2(
+				_elm_lang$core$Debug$log,
+				_elm_lang$core$Basics$toString(_p6._0._0),
+				{
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{results: _dwayne$playwhesmarter$Dashboard$Error}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				});
+		}
+	});
+var _dwayne$playwhesmarter$Dashboard$Loading = {ctor: 'Loading'};
+var _dwayne$playwhesmarter$Dashboard$NewPlayWheResults = function (a) {
+	return {ctor: 'NewPlayWheResults', _0: a};
 };
-var _dwayne$playwhesmarter$Dashboard$init = function (_p9) {
-	var _p10 = _p9;
-	var _p11 = _p10.api;
+var _dwayne$playwhesmarter$Dashboard$sendPlayWheResultsReq = function (api) {
+	return A2(
+		_elm_lang$http$Http$send,
+		_dwayne$playwhesmarter$Dashboard$NewPlayWheResults,
+		_dwayne$playwhesmarter$Dashboard$playWheResultsReq(api));
+};
+var _dwayne$playwhesmarter$Dashboard$init = function (_p7) {
+	var _p8 = _p7;
+	var _p9 = _p8.api;
 	return {
 		ctor: '_Tuple2',
-		_0: {results: _elm_lang$core$Maybe$Nothing, api: _p11},
-		_1: _dwayne$playwhesmarter$Dashboard$getResults(
-			_dwayne$playwhesmarter$Dashboard$requestForLatest(_p11))
+		_0: {api: _p9, results: _dwayne$playwhesmarter$Dashboard$Loading},
+		_1: _dwayne$playwhesmarter$Dashboard$sendPlayWheResultsReq(_p9)
 	};
 };
 var _dwayne$playwhesmarter$Dashboard$main = _elm_lang$html$Html$programWithFlags(
