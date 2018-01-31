@@ -9263,38 +9263,159 @@ var _dwayne$playwhesmarter$Suggestions$viewSuggestions = F6(
 	});
 var _dwayne$playwhesmarter$Suggestions$view = function (_p0) {
 	var _p1 = _p0;
-	var _p2 = _p1.suggestions;
-	if (_p2.ctor === 'Nothing') {
-		return A2(
-			_elm_lang$html$Html$div,
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$class('mb-5x text-center'),
-				_1: {ctor: '[]'}
-			},
-			{
-				ctor: '::',
-				_0: _elm_lang$html$Html$text('Please wait while we generate today\'s favourites and backups...'),
-				_1: {ctor: '[]'}
-			});
-	} else {
-		return A2(
-			_elm_lang$html$Html$div,
-			{ctor: '[]'},
-			{
-				ctor: '::',
-				_0: A6(_dwayne$playwhesmarter$Suggestions$viewSuggestions, 'Favourites', 'Favourite', _p2._0.likelyMarks, _p2._0.allLikelyMarks, _p2._0.likelyLines, _p2._0.allLikelyLines),
-				_1: {
+	var _p2 = _p1.data;
+	switch (_p2.ctor) {
+		case 'Loading':
+			return A2(
+				_elm_lang$html$Html$div,
+				{
 					ctor: '::',
-					_0: A6(_dwayne$playwhesmarter$Suggestions$viewSuggestions, 'Backups', 'Backup', _p2._0.unlikelyMarks, _p2._0.allUnlikelyMarks, _p2._0.unlikelyLines, _p2._0.allUnlikelyLines),
+					_0: _elm_lang$html$Html_Attributes$class('mb-5x text-center'),
 					_1: {ctor: '[]'}
-				}
-			});
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Please wait while we generate today\'s favourites and backups...'),
+					_1: {ctor: '[]'}
+				});
+		case 'Loaded':
+			if (_p2._0.ctor === 'Sunday') {
+				return A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class('mb-5x'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('row'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('col-md-8 offset-md-2'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$class('alert alert-info text-center'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('Today is Sunday! So there\'s no Play Whe today. Check back tomorrow for your favourites and backups.'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					});
+			} else {
+				return A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A6(_dwayne$playwhesmarter$Suggestions$viewSuggestions, 'Favourites', 'Favourite', _p2._0._0.likelyMarks, _p2._0._0.allLikelyMarks, _p2._0._0.likelyLines, _p2._0._0.allLikelyLines),
+						_1: {
+							ctor: '::',
+							_0: A6(_dwayne$playwhesmarter$Suggestions$viewSuggestions, 'Backups', 'Backup', _p2._0._0.unlikelyMarks, _p2._0._0.allUnlikelyMarks, _p2._0._0.unlikelyLines, _p2._0._0.allUnlikelyLines),
+							_1: {ctor: '[]'}
+						}
+					});
+			}
+		default:
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$class('mb-5x'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('row'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('col-md-8 offset-md-2'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$class('alert alert-danger text-center'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('We seem to be experiencing some technical difficulties at the moment. Please check back for today\'s favourites and backups in about 5 minutes. Hopefully the problem would be resolved by then.'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				});
 	}
 };
 var _dwayne$playwhesmarter$Suggestions$decodeIntList = _elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$int);
 var _dwayne$playwhesmarter$Suggestions$decodePicks = A2(_elm_lang$core$Json_Decode$field, 'picks', _dwayne$playwhesmarter$Suggestions$decodeIntList);
 var _dwayne$playwhesmarter$Suggestions$decodeByPeriod = _elm_lang$core$Json_Decode$list(_dwayne$playwhesmarter$Suggestions$decodePicks);
+var _dwayne$playwhesmarter$Suggestions$Flags = function (a) {
+	return {api: a};
+};
+var _dwayne$playwhesmarter$Suggestions$Model = F2(
+	function (a, b) {
+		return {api: a, data: b};
+	});
+var _dwayne$playwhesmarter$Suggestions$Suggestions = F8(
+	function (a, b, c, d, e, f, g, h) {
+		return {likelyMarks: a, allLikelyMarks: b, unlikelyMarks: c, allUnlikelyMarks: d, likelyLines: e, allLikelyLines: f, unlikelyLines: g, allUnlikelyLines: h};
+	});
+var _dwayne$playwhesmarter$Suggestions$decodeSuggestions = A9(
+	_elm_lang$core$Json_Decode$map8,
+	_dwayne$playwhesmarter$Suggestions$Suggestions,
+	A2(_elm_lang$core$Json_Decode$field, 'likely_marks', _dwayne$playwhesmarter$Suggestions$decodeByPeriod),
+	A2(_elm_lang$core$Json_Decode$field, 'all_likely_marks', _dwayne$playwhesmarter$Suggestions$decodeIntList),
+	A2(_elm_lang$core$Json_Decode$field, 'unlikely_marks', _dwayne$playwhesmarter$Suggestions$decodeByPeriod),
+	A2(_elm_lang$core$Json_Decode$field, 'all_unlikely_marks', _dwayne$playwhesmarter$Suggestions$decodeIntList),
+	A2(_elm_lang$core$Json_Decode$field, 'likely_lines', _dwayne$playwhesmarter$Suggestions$decodeByPeriod),
+	A2(_elm_lang$core$Json_Decode$field, 'all_likely_lines', _dwayne$playwhesmarter$Suggestions$decodeIntList),
+	A2(_elm_lang$core$Json_Decode$field, 'unlikely_lines', _dwayne$playwhesmarter$Suggestions$decodeByPeriod),
+	A2(_elm_lang$core$Json_Decode$field, 'all_unlikely_lines', _dwayne$playwhesmarter$Suggestions$decodeIntList));
+var _dwayne$playwhesmarter$Suggestions$Error = {ctor: 'Error'};
+var _dwayne$playwhesmarter$Suggestions$Loaded = function (a) {
+	return {ctor: 'Loaded', _0: a};
+};
 var _dwayne$playwhesmarter$Suggestions$update = F2(
 	function (msg, model) {
 		var _p3 = msg;
@@ -9304,7 +9425,7 @@ var _dwayne$playwhesmarter$Suggestions$update = F2(
 				_0: _elm_lang$core$Native_Utils.update(
 					model,
 					{
-						suggestions: _elm_lang$core$Maybe$Just(_p3._0._0)
+						data: _dwayne$playwhesmarter$Suggestions$Loaded(_p3._0._0)
 					}),
 				_1: _elm_lang$core$Platform_Cmd$none
 			};
@@ -9316,51 +9437,44 @@ var _dwayne$playwhesmarter$Suggestions$update = F2(
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{suggestions: _elm_lang$core$Maybe$Nothing}),
+						{data: _dwayne$playwhesmarter$Suggestions$Error}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				});
 		}
 	});
-var _dwayne$playwhesmarter$Suggestions$Flags = function (a) {
-	return {api: a};
+var _dwayne$playwhesmarter$Suggestions$Loading = {ctor: 'Loading'};
+var _dwayne$playwhesmarter$Suggestions$Data = function (a) {
+	return {ctor: 'Data', _0: a};
 };
-var _dwayne$playwhesmarter$Suggestions$Model = F2(
-	function (a, b) {
-		return {suggestions: a, api: b};
-	});
-var _dwayne$playwhesmarter$Suggestions$PlayWheResponse = F8(
-	function (a, b, c, d, e, f, g, h) {
-		return {likelyMarks: a, allLikelyMarks: b, unlikelyMarks: c, allUnlikelyMarks: d, likelyLines: e, allLikelyLines: f, unlikelyLines: g, allUnlikelyLines: h};
-	});
-var _dwayne$playwhesmarter$Suggestions$decodePlayWheResponse = A9(
-	_elm_lang$core$Json_Decode$map8,
-	_dwayne$playwhesmarter$Suggestions$PlayWheResponse,
-	A2(_elm_lang$core$Json_Decode$field, 'likely_marks', _dwayne$playwhesmarter$Suggestions$decodeByPeriod),
-	A2(_elm_lang$core$Json_Decode$field, 'all_likely_marks', _dwayne$playwhesmarter$Suggestions$decodeIntList),
-	A2(_elm_lang$core$Json_Decode$field, 'unlikely_marks', _dwayne$playwhesmarter$Suggestions$decodeByPeriod),
-	A2(_elm_lang$core$Json_Decode$field, 'all_unlikely_marks', _dwayne$playwhesmarter$Suggestions$decodeIntList),
-	A2(_elm_lang$core$Json_Decode$field, 'likely_lines', _dwayne$playwhesmarter$Suggestions$decodeByPeriod),
-	A2(_elm_lang$core$Json_Decode$field, 'all_likely_lines', _dwayne$playwhesmarter$Suggestions$decodeIntList),
-	A2(_elm_lang$core$Json_Decode$field, 'unlikely_lines', _dwayne$playwhesmarter$Suggestions$decodeByPeriod),
-	A2(_elm_lang$core$Json_Decode$field, 'all_unlikely_lines', _dwayne$playwhesmarter$Suggestions$decodeIntList));
-var _dwayne$playwhesmarter$Suggestions$requestForSuggestions = function (api) {
-	var endpoint = A2(_elm_lang$core$Basics_ops['++'], api, '/suggestions');
-	return A2(_elm_lang$http$Http$get, endpoint, _dwayne$playwhesmarter$Suggestions$decodePlayWheResponse);
+var _dwayne$playwhesmarter$Suggestions$Sunday = {ctor: 'Sunday'};
+var _dwayne$playwhesmarter$Suggestions$decodeData = A2(
+	_elm_lang$core$Json_Decode$andThen,
+	function (isSunday) {
+		return isSunday ? _elm_lang$core$Json_Decode$succeed(_dwayne$playwhesmarter$Suggestions$Sunday) : A2(_elm_lang$core$Json_Decode$map, _dwayne$playwhesmarter$Suggestions$Data, _dwayne$playwhesmarter$Suggestions$decodeSuggestions);
+	},
+	A2(_elm_lang$core$Json_Decode$field, 'is_sunday', _elm_lang$core$Json_Decode$bool));
+var _dwayne$playwhesmarter$Suggestions$dataReq = function (api) {
+	return A2(
+		_elm_lang$http$Http$get,
+		A2(_elm_lang$core$Basics_ops['++'], api, '/suggestions'),
+		_dwayne$playwhesmarter$Suggestions$decodeData);
 };
-var _dwayne$playwhesmarter$Suggestions$NewSuggestions = function (a) {
-	return {ctor: 'NewSuggestions', _0: a};
+var _dwayne$playwhesmarter$Suggestions$NewData = function (a) {
+	return {ctor: 'NewData', _0: a};
 };
-var _dwayne$playwhesmarter$Suggestions$getSuggestions = function (request) {
-	return A2(_elm_lang$http$Http$send, _dwayne$playwhesmarter$Suggestions$NewSuggestions, request);
+var _dwayne$playwhesmarter$Suggestions$sendDataReq = function (api) {
+	return A2(
+		_elm_lang$http$Http$send,
+		_dwayne$playwhesmarter$Suggestions$NewData,
+		_dwayne$playwhesmarter$Suggestions$dataReq(api));
 };
 var _dwayne$playwhesmarter$Suggestions$init = function (_p4) {
 	var _p5 = _p4;
 	var _p6 = _p5.api;
 	return {
 		ctor: '_Tuple2',
-		_0: {suggestions: _elm_lang$core$Maybe$Nothing, api: _p6},
-		_1: _dwayne$playwhesmarter$Suggestions$getSuggestions(
-			_dwayne$playwhesmarter$Suggestions$requestForSuggestions(_p6))
+		_0: {api: _p6, data: _dwayne$playwhesmarter$Suggestions$Loading},
+		_1: _dwayne$playwhesmarter$Suggestions$sendDataReq(_p6)
 	};
 };
 var _dwayne$playwhesmarter$Suggestions$main = _elm_lang$html$Html$programWithFlags(
