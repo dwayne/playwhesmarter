@@ -1,0 +1,32 @@
+---
+title: "Mark frequencies by year/month | Play Whe Smarter"
+description: "Find out how many times a mark has played for the year/month broken down by the time of day."
+og_title: "Mark frequencies by year/month"
+---
+
+<div class="mb-5x">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="mb-4">
+        <h2>Mark frequencies by year/month</h2>
+
+        <p>Find out how many times a mark has played for a given year, a given month in a given year, or for a given month regardless of the year. The frequencies are broken down by the time of day for your convenience.</p>
+
+        <p>We hope you can use this data to find some interesting marks to play. Have fun and may the mark be with you.</p>
+      </div>
+      <div class="mb-5x">
+        <div id="mark-freqs-by-year-month"></div>
+        <script src="/js/mark-freqs-by-year-month.js"></script>
+        <script>
+          var root = document.getElementById('mark-freqs-by-year-month');
+          Elm.MarkFreqsByYearMonth.embed(root, { api: '<%= @config[:api_host] %>' });
+        </script>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="text-center">
+        <a href="https://goo.gl/Fk6kDy" title="Lifestyle Motors | Porsche, Chevrolet, Jeep & Suzuki" target="_blank"><img class="img-fluid" src="/images/ads/lifestyle-motors.png" alt="Lifestyle Motors | Porsche, Chevrolet, Jeep & Suzuki"></a>
+      </div>
+    </div>
+  </div>
+</div>
