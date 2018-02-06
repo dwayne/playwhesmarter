@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-28221689-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-28221689-1');
+</script>
+
+    
+
+    <title>Mark frequencies by year/month | Play Whe Smarter</title>
+
+    <meta name="description" content="Find out how many times a mark has played for the year/month broken down by the time of day.">
+    <meta name="author" content="Dwayne Crooks">
+    <meta name="generator" content="Nanoc 4.8.12">
+
+    <!-- Facebook Open Graph Markup (https://developers.facebook.com/docs/sharing/webmasters/#markup) -->
+    <meta property="og:url" content="http://www.playwhesmarter.com/mark-frequencies-by-year-month/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mark frequencies by year/month">
+    <meta property="og:description" content="Find out how many times a mark has played for the year/month broken down by the time of day.">
+    <meta property="og:image:url" content="http://www.playwhesmarter.com/images/playwhe-logo-200x200.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="The Play Whe logo">
+    <meta property="og:image:width" content="200">
+    <meta property="og:image:height" content="200">
+    <meta property="fb:app_id" content="1238118876332200">
+
+    <!-- Twitter Card Markup (https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards) -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@playwhesmarter">
+    <meta name="twitter:title" content="Mark frequencies by year/month">
+    <meta name="twitter:description" content="Find out how many times a mark has played for the year/month broken down by the time of day.">
+    <meta name="twitter:image" content="http://www.playwhesmarter.com/images/playwhe-logo-200x200.png">
+    <meta name="twitter:image:alt" content="The Play Whe logo">
+
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.2/css/all.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <!-- Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=1238118876332200';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+    <div class="container">
+      <!-- Site header -->
+<section class="mt-3 mb-5x">
+  <!-- Title and tagline -->
+  <header class="mb-3 text-center">
+    <h1><a href="/" class="unlinkify">Play Whe Smarter</a></h1>
+    <h2>The smarter way to play Play Whe</h2>
+  </header>
+
+  <!-- Social proof -->
+  <div class="d-flex flex-row flex-wrap justify-content-center">
+    <div class="fb-like" data-href="http://www.playwhesmarter.com/" data-width="450" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+    <div class="mt-1 ml-2">
+      <a href="https://twitter.com/playwhesmarter?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="true">Follow @playwhesmarter</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+  </div>
+</section>
+
+      
+<div class="mb-5x">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="mb-4">
+        <h2>Mark frequencies by year/month</h2>
+
+        <p>Find out how many times a mark has played for a given year, a given month in a given year, or for a given month regardless of the year. The frequencies are broken down by the time of day for your convenience.</p>
+
+        <p>We hope you can use this data to find some interesting marks to play. Have fun and may the mark be with you.</p>
+      </div>
+      <div class="mb-5x">
+        <div id="mark-freqs-by-year-month"></div>
+        <script src="/js/mark-freqs-by-year-month.js"></script>
+        <script>
+          var root = document.getElementById('mark-freqs-by-year-month');
+          Elm.MarkFreqsByYearMonth.embed(root, { api: 'http://api.playwhesmarter.com' });
+        </script>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="text-center">
+        <a href="https://goo.gl/Fk6kDy" title="Lifestyle Motors | Porsche, Chevrolet, Jeep & Suzuki" target="_blank"><img class="img-fluid" src="/images/ads/lifestyle-motors.png" alt="Lifestyle Motors | Porsche, Chevrolet, Jeep & Suzuki"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Credits -->
+<footer class="mb-3 text-center" style="font-size: 0.8rem">
+  <p class="mb-1"><a href="/">Play&nbsp;Whe&nbsp;Smarter</a> is a project designed, developed and maintained by <a href="http://www.dwaynecrooks.com/">Dwayne&nbsp;Crooks</a>.</p>
+  <p class="mb-1">Built with <a href="https://nanoc.ws/">Nanoc</a> and <a href="http://getbootstrap.com/">Bootstrap</a>.</p>
+  <p class="mb-1">Hosted on <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+  <p class="mb-1">Made with <span class="text-danger"><i class="fas fa-heart"></i></span> in T&amp;T.</p>
+  <p><small class="text-muted">&copy; 2011-2018</small></p>
+</footer>
+
+    </div>
+  </body>
+</html>
