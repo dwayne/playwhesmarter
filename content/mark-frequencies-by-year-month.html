@@ -10,15 +10,21 @@ og_title: "Mark frequencies by year/month"
       <div class="mb-4">
         <h2>Mark frequencies by year/month</h2>
 
-        <p>Find out how many times a mark has played for a given year, a given month in a given year, or for a given month regardless of the year. The frequencies are broken down by the time of day for your convenience.</p>
+        <p>(<a href="#frequencies">Click here to skip to the frequencies</a>)</p>
+
+        <p>Find out <strong>how many times</strong> a mark has played <strong>for a given year</strong>. That means, if you want to know how many times a mark has played in <a href="?year=2018#frequencies">2018</a>, <a href="?year=2017#frequencies">2017</a>, <a href="?year=2016#frequencies">2016</a>, all the way down to the year Play Whe started, <a href="?year=1994#frequencies">1994</a>, then this is the tool you use.</p>
+
+        <p>You can also find out <strong>how many times</strong> a mark has played <strong>for a given month in a given year</strong>. That means, if you want to know how many times a mark has played in <a href="?year=2018&month=1#frequencies">January 2018</a>, <a href="?year=2017&month=2#frequencies">February 2017</a>, <a href="?year=2016&month=3#frequencies">March 2016</a>, all the way down to <a href="?year=1994&month=7#frequencies">July 1994</a>, then again this is the tool you use.</p>
+
+        <p>You'd notice that the <strong>frequencies are broken down by the time of day</strong> for your convenience.</p>
 
         <p>We hope you can use this data to find some interesting marks to play. Have fun and may the mark be with you.</p>
       </div>
       <div class="mb-5x">
-        <div id="mark-freqs-by-year-month"></div>
+        <div id="frequencies"></div>
         <script src="/js/mark-freqs-by-year-month.js"></script>
         <script>
-          var root = document.getElementById('mark-freqs-by-year-month');
+          var root = document.getElementById('frequencies');
           Elm.MarkFreqsByYearMonth.embed(root, { api: '<%= @config[:api_host] %>' });
         </script>
       </div>
