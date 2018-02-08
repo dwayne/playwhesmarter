@@ -8968,6 +8968,56 @@ var _dwayne$playwhesmarter$PlayWhe$monthAbbrs = _elm_lang$core$Dict$fromList(
 			}
 		}
 	});
+var _dwayne$playwhesmarter$PlayWhe$months = _elm_lang$core$Dict$fromList(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 1, _1: 'January'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 2, _1: 'February'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 3, _1: 'March'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 4, _1: 'April'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 5, _1: 'May'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 6, _1: 'June'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 7, _1: 'July'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 8, _1: 'August'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 9, _1: 'September'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 10, _1: 'October'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 11, _1: 'November'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 12, _1: 'December'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
 var _dwayne$playwhesmarter$PlayWhe$spirits = _elm_lang$core$Dict$fromList(
 	{
 		ctor: '::',
@@ -9199,6 +9249,10 @@ var _dwayne$playwhesmarter$PlayWhe$spirit = function (n) {
 		_elm_lang$core$Maybe$withDefault,
 		'unknown',
 		A2(_elm_lang$core$Dict$get, n, _dwayne$playwhesmarter$PlayWhe$spirits));
+};
+var _dwayne$playwhesmarter$PlayWhe$startYear = 1994;
+var _dwayne$playwhesmarter$PlayWhe$years = function (currentYear) {
+	return A2(_elm_lang$core$List$range, _dwayne$playwhesmarter$PlayWhe$startYear, currentYear);
 };
 
 var _dwayne$playwhesmarter$Dashboard$viewDraw = function (draw) {
