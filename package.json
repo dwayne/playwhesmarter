@@ -4,7 +4,8 @@
   "private": true,
   "description": "The Play Whe Smarter website.",
   "scripts": {
-    "build": "npm run build:widgets && npm run build:css",
+    "build": "npm run build:js && npm run build:widgets && npm run build:css",
+    "build:js": "webpack",
     "build:widgets": "npm run build:widgets:dashboard && npm run build:widgets:hidingmarks && npm run build:widgets:markfreqsbyyearmonth && npm run build:widgets:search && npm run build:widgets:suggestions",
     "build:widgets:dashboard": "elm make widgets/Dashboard.elm --output=./output/js/dashboard.js",
     "build:widgets:hidingmarks": "elm make widgets/HidingMarks.elm --output=./output/js/hiding-marks.js",
@@ -17,10 +18,15 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
-    "bootstrap": "^4.0.0-beta.2",
     "cssnano": "^3.10.0",
     "elm": "^0.18.0",
     "node-sass": "^4.7.2",
-    "postcss-cli": "^4.1.1"
+    "postcss-cli": "^4.1.1",
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.12.9"
   }
 }
