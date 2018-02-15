@@ -6,6 +6,7 @@
 
     <% if ENV['NANOC_ENV'] == 'prod' %>
       <%= render '/_google_analytics.html' %>
+      <%= render '/_google_adsense.html' %>
     <% end %>
 
     <title><%= @item[:title] %></title>
