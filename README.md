@@ -1,3 +1,3 @@
-# About
+# Play Whe Smarter
 
-The Play Whe Smarter website.
+A website for Play Whe enthusiasts.
