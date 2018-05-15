@@ -1,0 +1,13 @@
+---
+title: "Daily Play Whe Marks | Play Whe Smarter"
+description: "Daily Play Whe mark suggestions."
+---
+
+<section class="mb-5x">
+  <div id="suggestions"></div>
+  <script src="/js/suggestions.js"></script>
+  <script>
+    var root = document.getElementById('suggestions');
+    Elm.Suggestions.embed(root, { api: '<%= @config[:api_host] %>' });
+  </script>
+</section>
